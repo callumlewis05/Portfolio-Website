@@ -1,0 +1,21 @@
+/* === Return Button === */
+
+/* Return button stylings */
+#return {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 20px;
+  left: 20px;
+  border-radius: 50px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Return icon styling */
+#return img {
+  color: black; /* Set the color of the image */
+  width: 20px; /* Set the width of the image */
+}

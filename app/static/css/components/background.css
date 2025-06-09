@@ -1,0 +1,40 @@
+/* === General CSS === */
+
+/* Define custom colours using CSS variables */
+:root {
+  --dark-green: #0b1c10;
+  --neutral-green: #284d3b;
+  --light-green: #345e45;
+}
+
+/* Reset default margin and padding for all elements */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* === Board CSS === */
+
+/* Container for the board */
+#board-container {
+  display: flex;
+  justify-content: center;
+  padding: calc((100vh - 601px) / 2);
+}
+
+/* Inner container for the board */
+#board-inner-container {
+  position: relative;
+}
+
+/* Styling the size and background of the board */
+#board {
+  width: 900px;
+  height: 601px;
+  background-image: radial-gradient(
+    circle,
+    var(--light-green) 0%,
+    var(--neutral-green) 50%,
+    var(--dark-green) 100%
+  );
+}

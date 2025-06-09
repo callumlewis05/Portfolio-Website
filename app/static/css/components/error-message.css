@@ -1,0 +1,45 @@
+/* === Error/Success Messages === */
+
+/* Sets the styling for the error/success messages */
+.success,
+.error {
+  padding: 2px 8px;
+  background-color: white;
+  box-sizing: border-box;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* Sets the styling for the close button in the error/success messages */
+.error button,
+.success button {
+  background-color: transparent;
+  border-radius: 2px;
+  color: black;
+  border: none;
+}
+
+/* Sets the styling for the close button in the error/success messages on hover */
+.error button:hover,
+.success button:hover {
+  color: red;
+}
+
+/* Width for error/success messages on the login page */
+.login {
+  width: 250px;
+}
+
+/* Width for error/success messages on the signup page */
+.signup {
+  width: 303.6px;
+}
+
+/* Width for error/success messages on the tables page */
+.insufficient-funds {
+  width: 165px;
+  border-radius: 15px;
+  padding: 8px;
+}

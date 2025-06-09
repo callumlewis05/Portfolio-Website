@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}
+Game History
+{% endblock%}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/return-button.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/text.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/grid.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- Return button -->
+<a id="return" href="/projects/blackjack/menu">
+  <img src="{{ url_for('static', filename='img/arrow-back.svg') }}">
+</a>
+
+<!-- Title -->
+<h2>Game History</h2>
+<div class="divider"></div>
+
+<!-- Grid -->
+<div id="grid">
+  <form action="{{ url_for('views.game_history')}}" method="POST">
+
+    <!-- Headers -->
+    <div class="header">
+      <h3>Game date</h3>
+      <div class="sort">
+        <button type="submit" name="sort_type" value="ascending_date">
+          <img src="{{ url_for('static', filename='img/arrow-up.svg') }}">
+        </button>
+        <button type="submit" name="sort_type" value="descending_date">
+          <img src="{{ url_for('static', filename='img/arrow-down.svg') }}">
+        </button>
+      </div>
+    </div>
+    <div class="header">
+      <h3>Game time</h3>
+      <div class="sort">
+        <button type="submit" name="sort_type" value="ascending_time">
+          <img src="{{ url_for('static', filename='img/arrow-up.svg') }}">
+        </button>
+        <button type="submit" name="sort_type" value="descending_time">
+          <img src="{{ url_for('static', filename='img/arrow-down.svg') }}">
+        </button>
+      </div>
+    </div>
+    <div class="header">
+      <h3>Number of hands</h3>
+      <div class="sort">
+        <button type="submit" name="sort_type" value="ascending_num_of_hands">
+          <img src="{{ url_for('static', filename='img/arrow-up.svg') }}">
+        </button>
+        <button type="submit" name="sort_type" value="descending_num_of_hands">
+          <img src="{{ url_for('static', filename='img/arrow-down.svg') }}">
+        </button>
+      </div>
+    </div>
+    <div class="header">
+      <h3>Net Profit/Loss</h3>
+      <div class="sort">
+        <button type="submit" name="sort_type" value="ascending_net_profit_loss">
+          <img src="{{ url_for('static', filename='img/arrow-up.svg') }}">
+        </button>
+        <button type="submit" name="sort_type" value="descending_net_profit_loss">
+          <img src="{{ url_for('static', filename='img/arrow-down.svg') }}">
+        </button>
+      </div>
+    </div>
+    <div class="header">
+      <h3>Average Profit/Loss</h3>
+      <div class="sort">
+        <button type="submit" name="sort_type" value="ascending_average_profit_loss">
+          <img src="{{ url_for('static', filename='img/arrow-up.svg') }}">
+        </button>
+        <button type="submit" name="sort_type" value="descending_average_profit_loss">
+          <img src="{{ url_for('static', filename='img/arrow-down.svg') }}">
+        </button>
+      </div>
+    </div>
+    <div class="header">
+      <h3>Game Table</h3>
+      <div class="sort">
+        <button type="submit" name="sort_type" value="ascending_game_stakes">
+          <img src="{{ url_for('static', filename='img/arrow-up.svg') }}">
+        </button>
+        <button type="submit" name="sort_type" value="descending_game_stakes">
+          <img src="{{ url_for('static', filename='img/arrow-down.svg') }}">
+        </button>
+      </div>
+    </div>
+
+    <!-- Page number -->
+    <div id="page-num">
+      <button type="submit" name="page_num" value="-">
+        <img src="{{ url_for('static', filename='img/arrow-back.svg')}}">
+      </button>
+      {{ page_num }}
+      <button type="submit" name="page_num" value="+">
+        <img src="{{ url_for('static', filename='img/arrow-forward.svg')}}">
+      </button>
+    </div>
+  </form>
+  
+  <!-- Creates the cells and populates them with the game data -->
+  {% for i in range(7) %}
+    {% set index = (page_num - 1) * 7 + i %}
+    {% if index < games|length %}
+      {% for j in range(6) %}
+        <div class="cell">{{ games[index][j] }}</div>
+      {% endfor %}
+    {% else %}
+      {% for j in range(6) %}
+        <div class="cell"></div>
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+</div>
+{% endblock %}

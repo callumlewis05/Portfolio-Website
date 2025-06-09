@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}
+Account
+{% endblock%}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/return-button.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/text.css') }}" />
+{% endblock %}
+
+{% block content %}
+<!-- Return button -->
+<a id="return" href="/projects/blackjack/menu">
+  <img src="{{ url_for('static', filename='img/arrow-back.svg') }}" alt="Return icon.">
+</a>
+
+<!-- Account information -->
+<h2>Username</h2>
+<div class="divider"></div>
+<p>Username: {{ username }}</p>
+<h2>Wallet</h2>
+<div class="divider"></div>
+<p>Wallet value: {{ wallet }}</p>
+<h2>Account created</h2>
+<div class="divider"></div>
+<p>Account created: {{ sign_up_date }}</p>
+{% endblock %}

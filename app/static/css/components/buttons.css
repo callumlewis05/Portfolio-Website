@@ -1,0 +1,34 @@
+/* === Board CSS === */
+
+/* Styling for the board */
+#board {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Styling for menu buttons */
+.menu-button {
+  width: 165px;
+  height: 30px;
+  border-radius: 15px;
+  background-color: white;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Styling for information icons */
+.information {
+  width: 17px;
+}
+
+/* Removes the underline from all buttons in 'a' elements */
+a {
+  text-decoration: none;
+}

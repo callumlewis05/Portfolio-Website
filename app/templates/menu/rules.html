@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}
+Rules
+{% endblock%}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/return-button.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/text.css') }}" />
+{% endblock %}
+
+{% block content %}
+<!-- Return button -->
+<a id="return" href="/projects/blackjack/menu">
+  <img src="{{ url_for('static', filename='img/arrow-back.svg') }}" alt="Return icon.">
+</a>
+
+<!-- Objective section -->
+<h2>Objective</h2>
+<div class="divider"></div>
+<p>
+  The primary objective of blackjack is to beat the dealer's hand without
+  exceeding a total of 21 points.
+</p>
+
+<!-- Card values section -->
+<h2>Card Values</h2>
+<div class="divider"></div>
+<p>
+  - Number cards (2-10) are worth their face value. <br />
+  - Face cards (Jack, Queen, King) are each worth 10 points. <br />
+  - Aces can be worth either 1 point or 11 points, depending on which value
+  benefits the player's hand more.
+</p>
+<h2>Betting</h2>
+<div class="divider"></div>
+<p>
+  Before the cards are dealt, each player must place their bet. Players put
+  their chips in the betting area on the blackjack table. The minimum and
+  maximum bet limits depend on the table being played at.
+</p>
+
+<!-- Gameplay section -->
+<h2>Gameplay</h2>
+<div class="divider"></div>
+<p class="pre-indent">
+  1. Each player and the dealer are initially dealt two cards. The dealer deals
+  one card face-up (the "upcard") and one card face-down (the "hole card").<br />
+  2. Players take turns deciding how to play their hands. They can choose from
+  the following options:
+</p>
+<p class="indented">
+  - Hit: Take another card to increase the total value of the hand. Players can
+  continue to hit as long as they don't exceed 21 points. If they exceed 21,
+  they bust and lose the hand. <br />
+  - Stand: Keep the current total and end their turn. <br />
+  - Double Down: Double their original bet and receive one more card. After
+  receiving the additional card, they must stand. <br />
+  - Split: If the initial two cards are of the same rank (e.g., two 7s or two
+  8s), they can choose to split the cards into two separate hands, each with a
+  new bet equal to the original bet. They will receive one more card for each
+  hand, and they can play each hand separately.
+</p>
+<p>
+  3. After all players have completed their hands, the dealer reveals their hole
+  card. <br />
+  4. The dealer hits until they reach a total of 17 or higher. If the dealer
+  busts, all remaining players win. If the dealer doesn't bust, the player with
+  a higher hand total than the dealer's without exceeding 21 wins. Ties result
+  in a push (no win or loss). <br />
+  5. Winning players are paid equal money to their bets in addition to the
+  original bet, while blackjack (an Ace and a 10-value card) pays 3:2 in addition
+  to the original bet. Players who split should treat each hand separately and
+  refer to the previous statements for the pay-out on each hand, with players
+  who double down receiving the appropriate pay-out for their new bet. Players
+  who go bust or players who have a lower total than the dealer lose their bet.
+  Players whose total is equal to the dealer will push which results in no loss 
+  or gain of money.
+</p>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Play{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/board.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/return-button.css') }}">
+{% endblock %}
+
+{% block cover%}
+<div id="top-cover"></div>
+<div id="left-cover"></div>
+<div id="bottom-cover"></div>
+{% endblock %}
+
+{% block game_content %}
+<button id="deal">Deal Cards</button>
+<button id="hit" class="hidden">Hit</button>
+<button id="stand" class="hidden">Stand</button>
+<button id="double-down" class="hidden">Double down</button>
+<button id="split" class="hidden">Split</button>
+<button id="reset" class="hidden">Reset</button>
+<div id="current-player" class="hidden"></div>
+<a id="return" href="/projects/blackjack/menu/{{ page }}">
+  <img src="{{ url_for('static', filename='img/arrow-back.svg') }}">
+</a>
+{% endblock %}
+
+{% block js %}
+<script>
+  const table_stakes = "{{ table_stakes }}";
+  const player_username = "{{ player_username }}";
+  const player_wallet = "{{ player_wallet }}";
+  const tutorial_type = "{{ tutorial_type }}";
+  const staticImgPath = "{{ url_for('static', filename='img/') }}";
+</script>
+
+<script src="{{ url_for('static', filename='js/board.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,63 @@
+/* === Board === */
+
+/* Styling for the board */
+#board {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Styling for the form inside the board */
+#board form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Styling for div elements inside the form */
+#board form div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* === Form Input elements === */
+
+/* Base styling for buttons and input fields */
+button,
+input {
+  border: none;
+  padding: 2px 8px;
+}
+
+/* Remove default stylings onclick for button and input elements */
+button:focus,
+input:focus {
+  border: none;
+  outline: none;
+}
+
+/* Padding for input fields */
+input {
+  padding-left: 5px;
+}
+
+/* Styling for labels */
+label {
+  color: white;
+  margin-right: 5px;
+  padding-left: 0;
+  display: flex;
+}
+
+/* Styling for information icons */
+.information {
+  width: 17px;
+}
+
+/* Removes the underline from all buttons in 'a' elements */
+a {
+  text-decoration: none;
+}

@@ -1,0 +1,114 @@
+/* === Grid Styles === */
+
+/* Set the direction for elements in the board to follow */
+#board {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style the grid container */
+#grid {
+  height: 100%;
+  width: 100%;
+  margin-top: 10px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: 1fr repeat(7, 48px);
+}
+
+/* Apply alternating shades of grey to the children of the grid */
+#grid > .cell:nth-child(odd) {
+  background-color: #FEFEFE;
+}
+
+#grid > .cell:nth-child(even) {
+  background-color: #EFEFEF;
+}
+
+/* Style individual cells in the grid */
+.cell {
+  height: 48px;
+  border: 1px solid black;
+  border-right: none;
+  border-bottom: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* === Column Header Styles === */
+
+/* Style the column headers */
+.header {
+  background-color: #bbb;
+  border: 1px solid black;
+  border-right: none;
+  border-bottom: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Align elements inside the column header */
+.header h3 {
+  margin: 0;
+  word-break: break-word;
+  margin-right: -3px;
+  font-size: 1.1rem;
+}
+
+/* === Form Styles === */
+
+/* Style the header and page number form */
+form {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(6, calc(740px / 6));
+}
+
+/* === Button Styles === */
+
+/* Remove default button styles */
+button {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+}
+
+/* Style the arrow SVG's in the images */
+button img {
+  cursor: pointer;
+  width: 15px;
+  height: 15px;
+}
+
+/* Center arrow elements */
+.sort {
+  display: flex;
+  flex-direction: row;
+}
+
+/* === Page Number Styles === */
+
+/* Style page number container */
+#page-num {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  background-color: #eee;
+  grid-column: 1 / span 6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid black;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* Style page number arrows */
+#page-num img {
+  width: 15px;
+}

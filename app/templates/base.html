@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Home{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/components/background.css') }}"
+    />
+    {% block css %}
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/components/buttons.css') }}"
+    />
+    {% endblock %}
+  </head>
+  <body>
+    {% block cover %} {% endblock %}
+    <div id="board-container">
+      <div id="board-inner-container">
+        {% block game_content %}{% endblock %}
+        <div id="board">
+          <!-- Displays each error message flashed by the server -->
+          {% block content %}{% endblock %}
+          {% with messages = get_flashed_messages(with_categories=true) %} 
+            {% if messages %}
+              {% for category, message in messages %}
+                {% if category.split(',')[0] == 'error' %}
+                <div role="alert" id="message-{{ loop.index }}" class="error {{ category.split(',')[1] }}">
+                  {{ message }}
+                  <button
+                    type="button"
+                    class="close"
+                    onclick="closeMessage('message-{{ loop.index }}')"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                {% else %}
+                <div role="alert" id="message-{{ loop.index }}" class="success {{ category.split(',')[1] }}">
+                  {{ message }}
+                  <button
+                    type="button"
+                    class="close"
+                    onclick="closeMessage('message-{{ loop.index }}')"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+          {% endwith %}
+        </div>
+      </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    {% block js %}{% endblock %}
+  </body>
+</html>

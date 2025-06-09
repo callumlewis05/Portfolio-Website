@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/buttons.css') }}">
+{% endblock %}
+
+{% block content %}
+<a href="/projects/blackjack/login">
+  <button class="menu-button">Login</button>
+</a>
+<a href="/projects/blackjack/sign-up">
+  <button class="menu-button">Sign Up</button>
+</a>
+<a href="/projects/blackjack/menu">
+  <button class="menu-button">Play as guest</button>
+</a>
+{% endblock %}

@@ -1,0 +1,61 @@
+/* === Text === */
+
+/* Styles for text elements */
+h2,
+p {
+  color: white;
+}
+
+/* Adds a gap at the bottom of each paragraph */
+p {
+  margin: 0 0 20px 0;
+}
+
+/* Removes the trailing padding for p elements that come before indented text */
+.pre-indent {
+  margin: 0;
+}
+
+/* Adds padding to indent  */
+.indented {
+  padding-left: 20px;
+}
+
+/* === Board styles === */
+
+/* Sets the size and overflow styles for the main container */
+#board {
+  box-sizing: border-box;
+  padding: 75px;
+  overflow-y: scroll;
+}
+
+/* Styling scrollbar for specific element (#board) */
+#board::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Removes the scroller background */
+#board::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Sets the colour of the scrollbar */
+#board::-webkit-scrollbar-thumb {
+  background: rgb(180, 180, 180);
+}
+
+/* Sets the colour of the scrollbar on hover */
+#board::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+
+/* === Divider === */
+
+/* Sets the size and colour of the divider */
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: white;
+  margin: 3px 0;
+}

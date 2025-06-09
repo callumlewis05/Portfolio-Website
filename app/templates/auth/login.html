@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/form.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/return-button.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/error-message.css') }}" />
+{% endblock %}
+
+{% block title %}
+Login
+{% endblock %}
+
+{% block content %}
+<!-- Return button -->
+<a id="return" href="/projects/blackjack">
+  <img src="{{ url_for('static', filename='img/arrow-back.svg') }}" alt="Return icon.">
+</a>
+
+<form action="" method="POST">
+  <!-- Username section of the form -->
+  <div>
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username" placeholder="Username" />
+  </div>
+
+  <!-- Password section of the form -->
+  <div>
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      placeholder="Password"
+    />
+  </div>
+
+  <!-- Submit button -->
+  <button type="submit">Login</button>
+</form>
+{% endblock %}

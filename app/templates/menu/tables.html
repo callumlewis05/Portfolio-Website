@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+Tables
+{% endblock%}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/return-button.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/buttons.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='css/components/error-message.css') }}" />
+{% endblock %}
+
+{% block content %}
+<!-- Return button -->
+<a id="return" href="/projects/blackjack/menu">
+  <img src="{{ url_for('static', filename='img/arrow-back.svg') }}" alt="Return icon.">
+</a>
+
+<!-- Table options -->
+<a href="/projects/blackjack/menu/tables/practice-table">
+  <button class="menu-button">Practice table
+    <img class="information"
+      src="{{ url_for('static', filename='/img/information.svg') }}"
+      title="A table where you can practice with no impact on your wallet."
+    >
+  </button>
+</a>
+<a href="/projects/blackjack/menu/tables/low-stakes-table">
+  <button class="menu-button">Low stakes table
+    <img class="information"
+      src="{{ url_for('static', filename='/img/information.svg') }}"
+      title="A table with a minimum bet of 1 and a maximum bet of 20."
+    >
+  </button>
+</a>
+<a href="/projects/blackjack/menu/tables/medium-stakes-table">
+  <button class="menu-button">Medium stakes table
+    <img class="information"
+      src="{{ url_for('static', filename='/img/information.svg') }}"
+      title="A table with a minimum bet of 20 and a maximum bet of 100."
+    >
+  </button>
+</a>
+<a href="/projects/blackjack/menu/tables/high-stakes-table">
+  <button class="menu-button">High stakes table
+    <img class="information"
+      src="{{ url_for('static', filename='/img/information.svg') }}"
+      title="A table with a minimum bet of 100 and a maximum bet of 500."
+    >
+  </button>
+</a>
+{% endblock %}
