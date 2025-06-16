@@ -28,8 +28,8 @@
     <meta name="author" content="Callum Lewis" />
 
     <title>IVP.ai</title>
-    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/facicon.ico') }}" type="image/x-icon">
   </head>
   <body>
     <section id="section-1">
@@ -156,7 +156,7 @@
         <div class="bubbles"></div>
       </div>
       <script src="https://cdn.jsdelivr.net/gh/josephg/noisejs@master/perlin.js"></script>
-      <script src="bubbles.js" defer></script>
+      <script src="{{ url_for("bubbles.js") }}" defer></script>
     </section>
     <section id="section-5">
       <div id="heading-section">
@@ -311,7 +311,7 @@
       </div>
     </section>
 
-    <script src="gradient.js"></script>
+    <script src="{{ url_for("gradient.js") }}"></script>
     <script>
       document.querySelectorAll(".faq-item").forEach((question) => {
         question.addEventListener("click", () => {
@@ -324,6 +324,6 @@
       gradient.showGradientLegend();
     </script>
 
-    <script src="index.js"></script>
+    <script src="{{ url_for("index.js") }}"></script>
   </body>
 </html>
