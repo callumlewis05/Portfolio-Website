@@ -187,10 +187,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
             // After 1.5 seconds, toggle the "appear" classes
             activeTimeout = setTimeout(() => {
-              # icons.forEach((icon) => icon.classList.remove("appear"));
-              # if (iframes[index]) {
-              # iframes[index].classList.add("appear");
-              # }
+              // icons.forEach((icon) => icon.classList.remove("appear"));
+              // if (iframes[index]) {
+              // iframes[index].classList.add("appear");
+              // }
             }, 1500);
           }
         });
