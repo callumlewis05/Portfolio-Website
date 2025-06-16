@@ -102,7 +102,7 @@ body {
 /* Defines the bold 'Poppins' font for the title elements */
 @font-face {
   font-family: "Poppins";
-  src: url("../Fonts/Poppins-Bold.ttf") format("truetype");
+  src: url("../fonts/Poppins-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
 }
@@ -120,7 +120,7 @@ body {
 /* Defines the regular 'Poppins' font for the heading elements */
 @font-face {
   font-family: "Poppins";
-  src: url("../Fonts/Poppins-Regular.ttf") format("truetype");
+  src: url("../fonts/Poppins-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
@@ -143,7 +143,7 @@ body {
 /* Defines the regular 'Playfair Display' font for the alternate heading elements */
 @font-face {
   font-family: "Playfair Display";
-  src: url("../Fonts/PlayfairDisplay-Regular.ttf") format("truetype");
+  src: url("../fonts/PlayfairDisplay-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
 }
@@ -161,7 +161,7 @@ body {
 /* Defines the extra light 'Poppins' font for the paragraph elements */
 @font-face {
   font-family: "Poppins";
-  src: url("../Fonts/Poppins-ExtraLight.ttf") format("truetype");
+  src: url("../fonts/Poppins-ExtraLight.ttf") format("truetype");
   font-weight: 200;
   font-style: normal;
 }
