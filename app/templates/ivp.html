@@ -40,7 +40,7 @@
           The only data tool you need to grow and manage your business
         </h1>
         <img
-          src="img/laptop.webp"
+          src="{{ url_for('static', filename='img/laptop.webp') }}"
           alt="Laptop showcasing business analytics"
           id="hero-image"
           loading="lazy"
@@ -156,7 +156,7 @@
         <div class="bubbles"></div>
       </div>
       <script src="https://cdn.jsdelivr.net/gh/josephg/noisejs@master/perlin.js"></script>
-      <script src="{{ url_for('static', filename='bubbles.js') }}" defer></script>
+      <script src="{{ url_for('static', filename='js/bubbles.js') }}" defer></script>
     </section>
     <section id="section-5">
       <div id="heading-section">
@@ -311,7 +311,7 @@
       </div>
     </section>
 
-    <script src="{{ url_for('static', filename='gradient.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/gradient.js') }}"></script>
     <script>
       document.querySelectorAll(".faq-item").forEach((question) => {
         question.addEventListener("click", () => {
@@ -324,6 +324,6 @@
       gradient.showGradientLegend();
     </script>
 
-    <script src="{{ url_for('static', filename='index.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
   </body>
 </html>
