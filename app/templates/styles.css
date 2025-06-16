@@ -1,0 +1,1218 @@
+/* === CSS style reset === */
+
+/* Reset margin, padding, and box-sizing for all elements */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove default list bullet/number from list elements */
+ul,
+ol,
+dl,
+li {
+  list-style: none;
+}
+
+/* Remove underline and outline from link elements */
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+/* Make images easier to work with */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+
+
+
+/* === Accessibility Styles === */
+
+/* Remove animations, transitions, and smooth scroll for reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  /* Remove animations, transitions, and smooth scroll for all elements */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+
+
+/* === General Styles === */
+
+/* Define variables for colors and default font */
+:root {
+  /* Colours */
+  --main: #004f40;
+  --secondary: #cd9900;
+
+  --gradient-1: #0178fd;
+  --gradient-2: #01eaa7;
+
+  --text-colour: #000030;
+  --background-colour: #f9f9f9;
+  --background-colour-2: #fdfdfd;
+
+  /* Default font */
+  font-family: system-ui, sans-serif;
+}
+
+/* Set background properties for the HTML element */
+html {
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  overflow-x: hidden;
+}
+
+/* Enable smooth scrolling for links within the same page */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Defines the background colour of the page */
+body {
+  background-color: var(--background-colour);
+}
+
+
+
+
+
+/* === Text Styles === */
+
+/* Defines the bold 'Poppins' font for the title elements */
+@font-face {
+  font-family: "Poppins";
+  src: url("Fonts/Poppins-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* Set default styles for all title elements */
+.title-text {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(3rem, 8vw, 5rem);
+  font-weight: 700;
+  color: black;
+  text-align: left;
+  line-height: 110%;
+}
+
+/* Defines the regular 'Poppins' font for the heading elements */
+@font-face {
+  font-family: "Poppins";
+  src: url("Fonts/Poppins-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Set default styles for all heading elements */
+.heading-text {
+  font-family: "Poppins";
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+  font-weight: 400;
+  line-height: normal;
+  background-image: linear-gradient(
+    to right,
+    var(--gradient-1),
+    var(--gradient-2)
+  );
+  color: transparent;
+  background-clip: text;
+}
+
+/* Defines the regular 'Playfair Display' font for the alternate heading elements */
+@font-face {
+  font-family: "Playfair Display";
+  src: url("Fonts/PlayfairDisplay-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Set default styles for all alternate heading elements */
+.heading-type-2-text {
+  font-family: "Playfair Display";
+  font-size: clamp(1.5rem, 2vw + 1rem, 2.5rem);
+  font-weight: 400;
+  color: white;
+  text-align: left;
+  line-height: normal;
+}
+
+/* Defines the extra light 'Poppins' font for the paragraph elements */
+@font-face {
+  font-family: "Poppins";
+  src: url("Fonts/Poppins-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+
+/* Set default styles for all paragraph elements */
+.paragraph-text {
+  font-family: "Poppins";
+  font-size: clamp(1rem, 1vw + 0.5rem, 1.25rem);
+  font-weight: 200;
+  color: var(--text-colour);
+  text-align: left;
+  line-height: normal;
+}
+
+/* Set default styles for all alternate paragraph elements */
+.paragraph-type-2-text {
+  font-family: "Playfair Display";
+  font-size: clamp(1rem, 1vw + 0.5rem, 1.25rem);
+  font-weight: 400;
+  color: white;
+  text-align: left;
+  line-height: normal;
+}
+
+
+
+
+
+/* === Design breakpoints === */
+
+/* Mobile */
+@media screen and (max-width: 640px) {
+}
+
+/* Tablet */
+@media screen and (min-width: 641px) and (max-width: 1007px) {
+}
+
+/* Laptop */
+@media screen and (min-width: 1008px) {
+}
+
+
+
+
+
+/* === Section 1 - Hero === */
+
+/* Use a grid to position the background and content on top of each other */
+#section-1 {
+  display: grid;
+  overflow-x: hidden;
+}
+
+/* Position the content on top of the gradient background */
+#gradient-canvas,
+#hero-content {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+/* Align the image and the title in section one */
+#hero-content {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  margin: 10vh clamp(-20vw, (1100px - 100vw) * -0.5, 10vw) 10vh calc((300 / 1920) * 100vw);
+  align-items: center;
+}
+
+/* Gradient Background */
+#gradient-canvas {
+  /* A */
+  /* --gradient-color-1: #1619b9;
+  --gradient-color-2: #1ba8e9;
+  --gradient-color-3: #800586;
+  --gradient-color-4: #ff0573; */
+
+  /* B */
+  /* --gradient-color-1: #ef008f;
+  --gradient-color-2: #6ec3f4;
+  --gradient-color-3: #7038ff;
+  --gradient-color-4: #ffba27; */
+
+  /* C */
+  /* --gradient-color-1: #0178FD;
+  --gradient-color-2: #01EAA7;
+  --gradient-color-3: #0178FD;
+  --gradient-color-4: #01EAA7; */
+
+  /* D */
+  --gradient-color-1: var(--main);
+  --gradient-color-2: var(--secondary);
+  --gradient-color-3: var(--main);
+  --gradient-color-4: var(--secondary);
+
+  width: 100%;
+  position: absolute;
+  clip-path: polygon(0 0, 100% 0, 100% 50%, 0% 100%);
+  z-index: -1;
+}
+
+/* Set the size and positioning of the laptop image */
+#hero-img {
+  width: 40vw;
+  object-fit: contain;
+  display: block;
+  margin: 2rem auto 0;
+}
+
+@media screen and (max-width: 640px) {
+  /* Hide the laptop image on mobile */
+  #hero-image {
+    display: none !important;
+  }
+
+  /* Position the text in the centre and reset the margins to normal */
+  #hero-content {
+    grid-template-columns: 1fr;
+    margin: 10vh calc((300 / 1920) * 100vw);
+  }
+}
+
+
+
+
+
+/* === Section 2 - Tagline === */
+
+/* Set the padding of the tagline section */
+#section-2 {
+  padding: 0 calc((300 / 1920) * 100vw) 10vh calc((300 / 1920) * 100vw);
+}
+
+/* Sets the display of the container for both the input and the button */
+.input-container {
+  display: inline-grid;
+  grid-template-columns: 2fr 1fr;
+  align-items: center;
+  background: #f7f9fc;
+  border-radius: 25px;
+  margin: 5vh 0;
+  border: 1px solid #e0e4ec;
+}
+
+/* Hides the outline of the input to appear as if the button is in the input element */
+.input-container input {
+  border: none;
+  background: transparent;
+  outline: none;
+  padding: 10px 0 10px 10px;
+  flex: 1;
+  font-size: 16px;
+  color: #333;
+  min-width: 150px;
+  min-width: 10px;
+}
+
+/* Sets the appearance of the button */
+.input-container button {
+  background: var(--main);
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 5px 5px 5px 0;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  transition: 0.3s ease;
+}
+
+/* Changes the background-colour of the button on hover */
+.input-container button:hover,
+.call-button:hover {
+  background: var(--secondary);
+  transition: 0.3s ease;
+}
+
+/* Style the appearance of the button */
+.call-button {
+  display: inline-block;
+  background-color: var(--main);
+  color: white;
+  padding: 5px 10px;
+  margin: 5px;
+  border-radius: 30px;
+  border: none;
+  transition: 0.3s ease;
+}
+
+/* Set the style of the text in the button */
+.call-button a {
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Prevent text colour from going purple after being visited */
+.call-button a:visited {
+  color: white;
+}
+
+@media screen and (max-width: 640px) {
+  /* Provide more horizontal padding on mobile */
+  .input-container button {
+    padding: 5px 20px;
+  }
+}
+
+
+
+
+
+/* === Section 3 - Features === */
+
+/* Set the position for the text and image columns */
+#section-3 {
+  display: flex;
+  gap: 30px;
+  margin-top: 50px;
+  padding: 0 calc((300 / 1920) * 100vw);
+}
+
+/* Make the text-column take up half the width */
+#text-column {
+  flex: 1;
+  width: 100%;
+}
+
+/* Add margin above each heading in the text column */
+.heading-text:nth-of-type(n + 2) {
+  margin-top: 40vh;
+}
+
+/* Add margin to the bottom of the last paragraph in teh text column */
+.scroll-text-section:last-of-type {
+  margin-bottom: 20vh;
+}
+
+/* Set the size of the svgs */
+#text-column svg {
+  margin: 25%;
+}
+
+/* Makes the text and icons invinsible */
+#text-column h2,
+#text-column p,
+#text-column svg {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+/* Makes the text and icons appear when scrolled past (js) */
+#text-column .animate {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+/* Sets the width of the image column */
+#image-column {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  position: relative;
+  margin-bottom: 20vh;
+}
+
+/* Positions all icons in the centre of the container */
+#icon-container {
+  width: 100%;
+  height: 300px;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+/* Hide svgs and position them in the centre */
+#icon-container svg {
+  opacity: 0;
+  transition: 0.5s;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+/* Hide arcade videos and position them in the centre */
+#icon-container iframe {
+  opacity: 0;
+  transition: 0.5s;
+  pointer-events: none;
+  width: 100%;
+  height: 100%;
+  color-scheme: light;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+/* Make arcade videos appear and enable cursor events */
+#section-3 .appear {
+  opacity: 1 !important;
+  pointer-events: auto;
+}
+
+/* Set the responsive size of the icons */
+.icon {
+  position: absolute;
+  width: clamp(25px, 3.5vw, 50px);
+  transition: transform 0.4s ease;
+}
+
+/* Attatch the icon container to the middle of the screen (js) */
+.sticky {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Set transition for icon highlights */
+.highlight {
+  transition: opacity 0.5s ease;
+}
+
+/* Set visibility for icon highlihgts */
+.highlight-gradient {
+  opacity: 1;
+}
+
+/* Hide icon highlights */
+.highlight-black {
+  opacity: 0;
+}
+
+@media screen and (max-width: 640px) {
+  /* Hide icon group on mobile */
+  #image-column {
+    display: none;
+  }
+
+  /* Remove the margin on mobile as no need for extra space for scrolling animation */
+  .heading-text:nth-of-type(n + 2) {
+    margin-top: 0;
+  }
+
+  /* Remove the margin on mobile as no need for extra space for scrolling animation */
+  .scroll-text-section:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+
+
+
+/* === Section 4 - Data connections */
+
+/* Sets the width and colour for the data connections section */
+#section-4 {
+  padding: 20vh 0;
+  background-color: var(--background-colour-2);
+}
+
+/* Align the title and tag line in the middle for the data connections section */
+#section-4 .heading-type-2-text,
+#section-4 .paragraph-text {
+  text-align: center;
+}
+
+/* Add padding to the title and tagline */
+#title-content {
+  padding: 0 calc((300 / 1920) * 100vw);
+}
+
+/* Add space between title and data connections */
+#title-content .heading-type-2-text {
+  color: var(--text-colour);
+  margin-bottom: 30px;
+}
+
+/* Hide overflowing bubbles */
+.bubble-wrap {
+  overflow: hidden;
+  height: 420px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* Set position to relative to allow setting position for bubbles */
+.bubbles {
+  position: relative;
+}
+
+/* Set style for generic bubble */
+.bubble {
+  position: absolute;
+  width: 152px;
+  height: 152px;
+  border-radius: 50%;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.1);
+  background-image: url(https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/Final%20Output.png);
+  background-size: 1076px 1076px;
+}
+
+/* Set styles for each individual bubble */
+.logo1 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/airtable.svg") !important;
+}
+
+.logo2 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/activecampaign.svg") !important;
+}
+
+.logo3 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/dropbox.svg") !important;
+}
+
+.logo4 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/apple.svg") !important;
+}
+
+.logo5 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/asana.svg") !important;
+}
+
+.logo6 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/chargebee.svg") !important;
+}
+
+.logo7 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/clickup.svg") !important;
+}
+
+.logo8 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/quickbooks-logo.svg") !important;
+}
+
+.logo9 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/freshdesk.svg") !important;
+}
+
+.logo10 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/github.svg") !important;
+}
+
+.logo11 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/google%20ads.svg") !important;
+}
+
+.logo12 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/ga.svg") !important;
+}
+
+.logo13 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/google%20drive.svg") !important;
+}
+
+.logo14 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/google_sheets.svg") !important;
+}
+
+.logo15 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/hubspot.svg") !important;
+}
+
+.logo16 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/instagram.svg") !important;
+}
+
+.logo17 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/intercom.svg") !important;
+}
+
+.logo18 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/linkedin.png") !important;
+}
+
+.logo19 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/mailchimp.svg") !important;
+}
+
+.logo20 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/monday.svg") !important;
+}
+
+.logo21 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/notion.svg") !important;
+}
+
+.logo22 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/paypal.svg") !important;
+}
+
+.logo23 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 90%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/pipedrive.svg") !important;
+}
+
+.logo24 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/sage.svg") !important;
+}
+
+.logo25 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 65%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/sendgrid.svg") !important;
+}
+
+.logo26 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/sftp.svg") !important;
+}
+
+.logo27 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/surveymonkey.svg") !important;
+}
+
+.logo28 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/trello.svg") !important;
+}
+
+.logo29 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/woocommerce.svg") !important;
+}
+
+.logo30 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/workday.png") !important;
+}
+
+.logo31 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/postgresql.svg") !important;
+}
+
+.logo32 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: 70%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/salesforce.svg") !important;
+}
+
+.logo33 {
+  position: absolute;
+  opacity: 1;
+  background-color: white;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  box-shadow: 0 0 10px 0px lightgrey;
+  border-radius: 50% !important;
+  background-image: url("https://143721334.fs1.hubspotusercontent-eu1.net/hubfs/143721334/quickbooks-logo.svg") !important;
+}
+
+
+
+
+
+/* === Section 5 - Testimonials === */
+
+/* Hide paragraohs that are not active */
+#section-5 {
+  overflow: hidden;
+  background-color: var(--main);
+}
+
+/* Add a gap for text to slide down into */
+#heading-section {
+  display: grid;
+  margin-bottom: 10vh;
+}
+
+/* Set heading cover to in front of the text */
+#heading-cover {
+  background-color: var(--main);
+  z-index: 10;
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  padding: 10vh calc((300 / 1920) * 100vw) 0vh calc((300 / 1920) * 100vw);
+}
+
+/* Set the position of the progress bars */
+#progress-bars {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2vw;
+  position: relative;
+  z-index: 5;
+}
+
+/* Set size of each progress bar */
+.progress-bar {
+  margin-top: 30px;
+  height: 1px;
+  background-color: white;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+}
+
+/* Increase the size of the active progress bar */
+.progress-bar.active {
+  transform: scaleY(200%) !important;
+  transform: scaleX(102%);
+  border-radius: 4px;
+}
+
+/* Set the width all the fills of the progress bar to zero */
+.progress-bar .progress-bar-fill {
+  width: 0%;
+}
+
+/* Change the colour and size of the active progress bar */
+.progress-bar.active .progress-bar-fill {
+  width: 100%;
+  background-color: var(--secondary);
+  transition: width ease-in-out 5s;
+}
+
+/* Set the position of the text below the heading cover */
+#testimonials-clients {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2vw;
+  z-index: 1;
+  padding: 10vh calc((300 / 1920) * 100vw) 0vh calc((300 / 1920) * 100vw);
+}
+
+/* Set the transition to moving the testimonial clients */
+.testimonials-client  {
+  z-index: 0;
+  transition: 1s;
+}
+
+/* Move the testimonial clients down when active */
+.testimonials-client.active {
+  transform: translateY(100%);
+}
+
+/* Position all the paragraphs on top of each other in the centre */
+#testimonials-container {
+  display: grid;
+  padding: 10vh calc((300 / 1920) * 100vw) 30vh calc((300 / 1920) * 100vw);
+}
+
+/* Position all the paragraphs on top of each other */
+#testimonials-container p {
+  grid-row: 1 / 2;
+  grid-column: 1 / 2;
+}
+
+/* Move the first paragraph off the screen to the left */
+#testimonials-container p:nth-of-type(1) {
+  transform: translateX(-100vw);
+  transition: transform ease-in-out 1s;
+}
+
+/* Move the second paragraph into the screen in the middle */
+#testimonials-container p:nth-of-type(2) {
+  transform: translateX(0);
+  transition: transform ease-in-out 1s;
+}
+
+/* Move the third paragraph off the screen to the right */
+#testimonials-container p:nth-of-type(3) {
+  transform: translateX(100vw);
+  transition: transform ease-in-out 1s;
+}
+
+
+
+
+
+/* === Section 6 - FAQs === */
+
+/* Set the spacing for FAQ section */
+#section-6 {
+  margin: 20vh 0;
+  padding: 0 calc((300 / 1920) * 100vw);
+}
+
+/* Position the title in the centre and make it black */
+#section-6 .heading-type-2-text {
+  color: black;
+  text-align: center;
+}
+
+/* Set size and spacing for FAQ containers */
+.faq-container {
+  width: 100%;
+  margin-top: 5vh;
+}
+
+/* Add a cursor while hovering over the FAQs */
+.faq-item button {
+  cursor: pointer;
+}
+
+/* Make the link bold and underlined */
+.faq-item a {
+  font-weight: 500;
+  border-bottom: 1px solid var(--text-colour);
+  transition: 0.3s;
+}
+
+/* Prevent the link from turning purple after being visited */
+.faq-item a:visited {
+  color: var(--text-colour);
+}
+
+/* Change the colour of the text and underline when hovered */
+.faq-item a:hover {
+  color: var(--gradient-1);
+  border-bottom: 1px solid var(--gradient-1);
+  transition: 0.3s;
+}
+
+/* Add a line between each FAQ */
+.faq-item:not(:last-of-type) {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Align the question and icon for each FAQ */
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  background-color: var(--background-colour);
+}
+
+/* Set the height of the answer of the FAQ to 0 and add a transition */
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+  padding: 0 15px;
+}
+
+/* Add spacing to the answer */
+.active .faq-answer {
+  max-height: 200px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Set the size of the arrows for the FAQs */
+.arrow {
+  width: 25px;
+  height: 25px;
+  transition: transform 0.3s ease;
+}
+
+/* Rotate the arrow left when the FAQ is active */
+.active .arrow {
+  transform: rotate(-90deg);
+}
+
+/* Align the call button at the bottom in the middle */
+#container {
+  margin: 10vh 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
