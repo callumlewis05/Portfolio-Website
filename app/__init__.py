@@ -1,5 +1,6 @@
 from flask import Flask
 import os
+from dotenv import load_dotenv
 
 
 def create_app():
@@ -13,8 +14,8 @@ def create_app():
     app = Flask(__name__)
 
     # Configure the secret key (used to provide cryptographic security).
-    os.getenv('DATABASE_HOST')
-    app.secret_key = os.getenv('DATABASE_HOST')
+    load_dotenv()
+    app.secret_key = os.getenv('SECRET_KEY')
 
     # Import all the blueprints.
     from .blackjack_views import blackjack_views

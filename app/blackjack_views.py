@@ -156,7 +156,7 @@ def account():
                                sign_up_date=info["sign_up_date"],)
     else:
         # If the user is not logged in (guest), redirect the user to the guest menu.
-        return redirect(url_for('views.menu'))
+        return redirect(url_for('blackjack_views.menu'))
 
 
 @blackjack_views.route('/menu/game-history', methods=['GET', 'POST'])
@@ -230,7 +230,7 @@ def game_history():
         return render_template('menu/game-history.html', games=sorted_rows, page_num=page_num)
     else:
         # If the user is not logged in (guest), render the guest menu template
-        return redirect(url_for('views.menu'))
+        return redirect(url_for('blackjack_views.menu'))
 
 
 # ================
@@ -268,7 +268,7 @@ def table(table_stakes: str, practice: bool = False):
                 # If the user does not have enough funds, it redirects them to the tables menu and displays an error message.
                 error_message = "You do not have enough funds in your wallet."
                 session['error_message'] = error_message
-                return redirect(url_for('views.tables'))
+                return redirect(url_for('blackjack_views.tables'))
             # Checks if data is being sent in the request.
             elif request.method == 'POST':
                 # Gets the data sent in the request.
