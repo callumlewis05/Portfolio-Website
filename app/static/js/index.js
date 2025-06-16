@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Function to load multiple SVGs in order
   const loadSVGsInOrder = async () => {
     for (let i = 0; i < 6; i++) {
-      await loadSVG(`img/icon${i + 1}-highlight.svg`, "icon-container");
+      await loadSVG(`${imageUrl}icon${i + 1}-highlight.svg`, "icon-container");
     }
   };
 

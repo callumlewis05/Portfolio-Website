@@ -313,6 +313,9 @@
 
     <script src="{{ url_for('static', filename='js/gradient.js') }}"></script>
     <script>
+      const imageUrl = "{{ url_for('static', filename='img/') }}";
+      console.log("Image URL:", imageUrl);
+
       document.querySelectorAll(".faq-item").forEach((question) => {
         question.addEventListener("click", () => {
           question.classList.toggle("active");
