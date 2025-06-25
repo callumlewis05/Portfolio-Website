@@ -229,7 +229,7 @@ document.addEventListener("DOMContentLoaded", () => {
     for (let i = 0; i < 6; i++) {
       try {
         const response = await fetch(
-          `img/icon${mobileSVGOrder[i]}-highlight.svg`
+          `${imageUrl}icon${mobileSVGOrder[i]}-highlight.svg`
         );
         const svgText = await response.text();
 
