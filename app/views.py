@@ -16,8 +16,8 @@ def home():
     Returns:
         Rendered HTML template: 'home.html'
     """
-    return render_template('home.html')
+    return render_template('home/home.html')
 
 @views.route('/projects/ivp')
 def ivp():
-    return render_template('ivp.html')
+    return render_template('projects/ivp/ivp.html')

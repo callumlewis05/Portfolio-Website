@@ -64,7 +64,7 @@ def login():
                 flash('Incorrect password', category='error,login')
 
     # Regardless of GET or POST, return the login form template.
-    return render_template('auth/login.html')
+    return render_template('projects/blackjack/auth/login.html')
 
 
 @auth.route('/logout')
@@ -81,7 +81,7 @@ def logout():
         session.pop('user_id', None)
 
     # Redirects the user to the home page.
-    return redirect(url_for('views.home'))
+    return redirect(url_for('blackjack_views.home'))
 
 
 # =================
@@ -123,4 +123,4 @@ def signup():
                 flash('Username already exists.', category='error,signup')
 
     # Renders the HTML template.
-    return render_template('auth/sign-up.html')
+    return render_template('projects/blackjack/auth/sign-up.html')

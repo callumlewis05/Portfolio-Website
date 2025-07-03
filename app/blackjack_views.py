@@ -52,10 +52,10 @@ def home():
 
     if 'username' in session:
         # User is logged in, render user menu template
-        return render_template('home/user-home.html')
+        return render_template('projects/blackjack/home/user-home.html')
     else:
         # User is not logged in (guest), render guest menu template
-        return render_template('home/guest-home.html')
+        return render_template('projects/blackjack/home/guest-home.html')
 
 
 @blackjack_views.route('/menu')
@@ -79,10 +79,10 @@ def menu():
 
     if 'username' in session:
         # User is logged in, render user menu template
-        return render_template('menu/user-menu.html')
+        return render_template('projects/blackjack/menu/user-menu.html')
     else:
         # User is not logged in (guest), render guest menu template
-        return render_template('menu/guest-menu.html')
+        return render_template('projects/blackjack/menu/guest-menu.html')
 
 
 # ====================
@@ -98,7 +98,7 @@ def rules():
     """
 
     # Render the rules HTML template.
-    return render_template('menu/rules.html')
+    return render_template('projects/blackjack/menu/rules.html')
 
 
 @blackjack_views.route('/menu/tables')
@@ -122,7 +122,7 @@ def tables():
         flash(error_message, category='error,insufficient-funds')
 
     # Render the tables HTML template.
-    return render_template('menu/tables.html')
+    return render_template('projects/blackjack/menu/tables.html')
 
 
 @blackjack_views.route('/menu/tutorials')
@@ -134,7 +134,7 @@ def tutorials():
         Rendered HTML template: 'menu/tutorials.html'
     """
 
-    return render_template('menu/tutorials.html')
+    return render_template('projects/blackjack/menu/tutorials.html')
 
 
 @blackjack_views.route('/menu/account')
@@ -150,7 +150,7 @@ def account():
     if 'username' in session:
         info = get_account_information(session['username'])
         # If the user is logged in (authenticated), render the user menu template
-        return render_template('menu/account.html',
+        return render_template('projects/blackjack/menu/account.html',
                                username=session['username'],
                                wallet=info["wallet"],
                                sign_up_date=info["sign_up_date"],)
@@ -227,7 +227,7 @@ def game_history():
         session['sort_type'] = sort_type
 
         # Renders the HTML template.
-        return render_template('menu/game-history.html', games=sorted_rows, page_num=page_num)
+        return render_template('projects/blackjack/menu/game-history.html', games=sorted_rows, page_num=page_num)
     else:
         # If the user is not logged in (guest), render the guest menu template
         return redirect(url_for('blackjack_views.menu'))
@@ -308,7 +308,7 @@ def table(table_stakes: str, practice: bool = False):
         'username' in session) else "Guest"
 
     # Renders the HTML template using the username, wallet and table_stakes.
-    return render_template('board.html',
+    return render_template('projects/blackjack/board.html',
                            page="tables",
                            table_stakes=table_stakes,
                            player_username=player_username,
@@ -374,4 +374,4 @@ def basics(tutorial_type):
     Returns:
         Rendered HTML template: 'board.html'
     """
-    return render_template('board.html', page="tutorials", tutorial_type=tutorial_type)
+    return render_template('projects/blackjack/board.html', page="tutorials", tutorial_type=tutorial_type)
