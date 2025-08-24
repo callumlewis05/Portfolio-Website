@@ -1,96 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio Under Development</title>
-  <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(to right, #2c3e50, #3498db);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+        name="description"
+        content="Unlock powerful insights with IVP.ai's advanced analytics tools."
+      />
+      <meta property="og:title" content="Callum's Portfolio" />
+      <meta property="og:description" content="A collation of Callum's work." />
+      <meta
+        property="og:image"
+        content="{{ url_for('static', filename='img/preview.jpg') }}"
+      />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:url" content="https://callumlewis.uk" />
+      <meta property="og:type" content="website" />
+      <meta name="keywords" content="portfolio, web development" />
+      <meta name="robots" content="index, follow" />
+      <meta name="author" content="Callum Lewis" />
 
-    .container {
-      max-width: 600px;
-      padding: 20px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .emoji {
-      font-size: 3rem;
-      margin: 1rem 0;
-    }
-
-    p {
-      font-size: 1.2rem;
-      margin-top: 0;
-      margin-bottom: 1.2rem;
-    }
-
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0 auto;
-    }
-
-    ul li {
-      margin: 0.5rem 0;
-    }
-
-    a {
-      color: #f1f1f1;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    a:hover {
-      color: #ffd700;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 2rem;
-      }
-
-      p {
-        font-size: 1rem;
-      }
-
-      a {
-        font-size: 1rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <h1>Coming Soon!</h1>
-    <div class="emoji">🚧</div>
-    <p>
-      My portfolio site is currently under development.<br>
-      Please check back soon!
-    </p>
-    <p>You can view some of my projects in the meantime:</p>
-    <ul>
-      <li><a href="/projects/ivp">ivp.ai</a></li>
-      <li><a href="/projects/blackjack">Blackjack</a></li>
-      <li><a href="https://reytonwirereturns.com" target="_blank">Reyton Wire</a></li>
-      <li><a href="https://paintworx.uk" target="_blank">Paintworx Automotive Repairs</a></li>
-    </ul>
-  </div>
-</body>
+      <title>Callum's Portfolio</title>
+      <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='home/styles.css') }}"
+      />
+      <link
+        rel="icon"
+        href="{{ url_for('static', filename='home/facicon.ico') }}"
+        type="image/x-icon"
+      />
+    </head>
+  </head>
+  <body>
+    <main id="content">
+      <div id="container">
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-1.png')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          >
+        </div>
+        <div class="home-element text-box">
+          <a class="link-text" href="https://github.com/callumlewis05">GITHUB</a>
+          <a class="link-text" href="https://www.linkedin.com/in/callumlewis05/">LINKEDIN</a>
+          <a class="link-text" href="mailto:contact@callumlewis.uk">EMAIL</a>
+        </div>
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-2.png')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          >
+        </div>
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-3.png')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          >
+        </div>
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-4.png')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          >
+        </div>
+        <div class="home-element title">
+          <h1 class="title-text">Welcome.</h1>
+        </div>
+        <div class="home-element text-box">
+          <nav>
+            <button class="link-text active">HOME</button>
+            <button class="link-text">ABOUT</button>
+            <button class="link-text">PROJECTS</button>
+            <button class="link-text">EXPERIENCE</button>
+            <button class="link-text">CONTACT</button>
+          </nav>
+        </div>
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-5.png')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          >
+        </div>
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-6.png')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          >
+        </div>
+        <div class="home-element text-box">
+          <p class="paragraph-text">
+            I AM A <span class="highlight">WEB DEVELOPER</span> AND GRAPHIC DESIGNER.
+          </p>
+          <p class="paragraph-text">
+            I LIKE TO MAKE WEBSITES AND MAKE THEM LOOK PRETTY.
+          </p>
+        </div>
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-7.png')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          >
+        </div>
+      </div>
+    </main>
+  </body>
 </html>
-

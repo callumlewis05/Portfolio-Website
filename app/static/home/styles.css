@@ -1,0 +1,275 @@
+/* === CSS style reset === */
+
+/* Reset margin, padding, and box-sizing for all elements */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Remove default list bullet/number from list elements */
+ul,
+ol,
+dl,
+li {
+  list-style: none;
+}
+
+/* Remove underline and outline from link elements */
+a {
+  text-decoration: none;
+  outline: none;
+}
+
+/* Make images easier to work with */
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* === Accessibility Styles === */
+
+/* Remove animations, transitions, and smooth scroll for reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  /* Remove animations, transitions, and smooth scroll for all elements */
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+
+
+
+
+/* === General Styles === */
+
+/* Define variables for colors and default font */
+:root {
+  /* Colours */
+  --highlight: #FF791F;
+
+  --text-colour: #000030;
+  --background-colour: #f9f9f9;
+
+  --black: #000000;
+  --white: #FFFFFF;
+
+  /* Default font */
+  font-family: system-ui, sans-serif;
+}
+
+/* Set background properties for the HTML element */
+html {
+  background-image: none;
+  border: none;
+  border-radius: 0;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+/* Enable smooth scrolling for links within the same page */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Defines the background colour of the page */
+body {
+  background-color: var(--background-colour);
+  min-height: 100vh;
+  height: 100%;
+}
+
+
+
+
+
+/* === Text Styles === */
+
+/* Defines the semi-bold 'Alexandria' font for the title elements */
+@font-face {
+  font-family: "Alexandria";
+  src: url("../../../fonts/Alexandria-Bold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Set default styles for all title elements */
+.title-text {
+  font-family: "Alexandria", sans-serif;
+  font-size: clamp(3rem, 9vw, 8.5rem);
+  font-weight: 600;
+  color: black;
+  text-align: left;
+  line-height: 110%;
+  letter-spacing: -0.3vw;
+}
+
+/* Set default styles for all link elements */
+.link-text {
+  font-family: "Alexandria", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 600;
+  color: black;
+  text-align: left;
+  letter-spacing: -0.1vw;
+}
+
+/* Set default styles for all paragraph elements */
+.paragraph-text {
+  font-family: "Alexandria", sans-serif;
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-weight: 600;
+  color: black;
+  text-align: left;
+  letter-spacing: -0.1vw;
+  padding-bottom: 1rem;
+}
+
+/* Change colour of highlighted elements */
+.highlight {
+  color: var(--highlight);
+  display: inline !important;
+}
+
+
+
+
+
+/* === Design breakpoints === */
+
+/* Mobile */
+@media screen and (max-width: 640px) {
+}
+
+/* Tablet */
+@media screen and (min-width: 641px) and (max-width: 1007px) {
+}
+
+/* Laptop */
+@media screen and (min-width: 1008px) {
+}
+
+/* === Section 1 - Hero === */
+
+main {
+  height: 100%;
+}
+
+#container {
+  height: 100%;
+  padding: 30px;
+  border-top: solid 2px black;
+  display: grid;
+  grid-template-columns: repeat(15, [col] 1fr);
+  grid-template-rows: repeat(10, [row] 1fr);
+  gap: 20px;
+  justify-items: center;
+}
+
+#container > * {
+  width: 100%;
+  overflow: hidden;
+}
+
+.home-element.text-box {
+  border: 1px solid var(--black);
+  padding: 10px;
+}
+
+.home-element.text-box * {
+  display: block;
+}
+
+.home-element.image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-element.title {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.home-element img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.home-element button {
+  border: none;
+  background-color: var(--background-colour);
+  cursor: pointer;
+}
+
+.home-element button.active {
+  color: var(--highlight);
+}
+
+#container .home-element:nth-of-type(1) {
+  grid-column: col / span 2;
+  grid-row: row / span 3;
+}
+
+#container .home-element:nth-of-type(2) {
+  grid-column: col 3 / span 3;
+  grid-row: row / span 3;
+}
+
+#container .home-element:nth-of-type(3) {
+  grid-column: col 6 / span 6;
+  grid-row: row / span 3;
+}
+
+#container .home-element:nth-of-type(4) {
+  grid-column: col 12 / span 4;
+  grid-row: row / span 6;
+}
+
+#container .home-element:nth-of-type(5) {
+  grid-column: col / span 4;
+  grid-row: row 4 / span 2;
+}
+
+#container .home-element:nth-of-type(6) {
+  grid-column: col 5 / span 7;
+  grid-row: row 4 / span 3;
+}
+
+#container .home-element:nth-of-type(7) {
+  grid-column: col / span 4;
+  grid-row: row 6 / span 3;
+}
+
+#container .home-element:nth-of-type(8) {
+  grid-column: col / span 4;
+  grid-row: row 9 / span 2;
+}
+
+#container .home-element:nth-of-type(9) {
+  grid-column: col 5 / span 5;
+  grid-row: row 7 / span 4;
+}
+
+#container .home-element:nth-of-type(10) {
+  grid-column: col 10 / span 3;
+  grid-row: row 7 / span 4;
+}
+
+#container .home-element:nth-of-type(11) {
+  grid-column: col 13 / span 3;
+  grid-row: row 7 / span 4;
+}
