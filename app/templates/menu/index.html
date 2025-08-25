@@ -37,6 +37,7 @@
     </head>
   </head>
   <body>
+    <div class="background-overlay"></div>
     <main id="content">
       <div id="container">
         <div class="home-element image">
@@ -46,7 +47,20 @@
           />
         </div>
         <div class="home-element text-box">
-          <div class="link">
+          <div class="settings">
+            <div class="link">
+              <p class="paragraph-text"><span class="mode">DARK</span> MODE</p>
+              <label class="switch">
+                <input type="checkbox" onclick="switchMode()">
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div class="link">
+              <button onclick="settings()" class="link-text">CLOSE</button>
+            </div>
+          </div>
+          <div class="social-links active">
+                      <div class="link">
             <a
               class="link-text"
               target="_blank"
@@ -75,6 +89,10 @@
             >
               EMAIL
             </a>
+          </div>
+          <button class="link-text" onclick="settings()">
+            SETTINGS
+          </button>
           </div>
         </div>
         <div class="home-element image">

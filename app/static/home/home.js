@@ -6,6 +6,8 @@ function switchMode() {
   document.body.style.setProperty('--text-colour', mode ? '#000000' : '#F9F9F9');
   document.body.style.setProperty('--outline-colour', mode ? '#000000' : '#F9F9F9');
 
+  document.querySelector('.mode').innerHTML = mode ? 'LIGHT' : 'DARK';
+
   // flip mode for next time
   mode = !mode;
 }
@@ -33,3 +35,19 @@ function redirect(url) {
     window.location.href = url;
   }, 1000);
 }
+
+function settings() {
+  document.querySelector('.settings').classList.toggle('active');
+  document.querySelector('.social-links').classList.toggle('active');
+  document.querySelector('#container > .home-element.text-box:nth-child(2)').classList.toggle('active');
+}
+
+function mixMode() {
+  setTimeout(() => {
+    document.querySelectorAll('.title-text').forEach(element => {
+      element.classList.add('mixed-colour');
+    })
+  }, 2200)
+}
+
+mixMode()
