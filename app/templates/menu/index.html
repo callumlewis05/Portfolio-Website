@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+        name="description"
+        content="A collation of Callum's work."
+      />
+      <meta property="og:title" content="Callum's Portfolio" />
+      <meta property="og:description" content="A collation of Callum's work." />
+      <meta
+        property="og:image"
+        content="{{ url_for('static', filename='img/preview.jpg') }}"
+      />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:url" content="https://callumlewis.uk" />
+      <meta property="og:type" content="website" />
+      <meta name="keywords" content="portfolio, web development" />
+      <meta name="robots" content="index, follow" />
+      <meta name="author" content="Callum Lewis" />
+
+      <title>Callum's Portfolio</title>
+      <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='home/styles.css') }}"
+      />
+      <link
+        rel="icon"
+        href="{{ url_for('static', filename='home/facicon.ico') }}"
+        type="image/x-icon"
+      />
+    </head>
+  </head>
+  <body>
+    <main id="content">
+      <div id="container">
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-1.webp')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          />
+        </div>
+        <div class="home-element text-box">
+          <div class="link">
+            <a
+              class="link-text"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/callumlewis05"
+            >
+              GITHUB
+            </a>
+          </div>
+          <div class="link">
+            <a
+              class="link-text"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.linkedin.com/in/callumlewis05/"
+            >
+              LINKEDIN
+            </a>
+          </div>
+          <div class="link">
+            <a
+              class="link-text"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="mailto:contact@callumlewis.uk"
+            >
+              EMAIL
+            </a>
+          </div>
+        </div>
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-2.webp')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          />
+        </div>
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-3.webp')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+            fetchpriority="high"
+          />
+        </div>
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-4.webp')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          />
+        </div>
+        <div class="home-element title">
+          <div class="text-overlay"></div>
+          <svg class="outline" width="100%" height="100%">
+            <defs>
+              <clipPath id="clip1">
+                <rect x="0" y="0" width="100%" height="25%" />
+              </clipPath>
+            </defs>
+            <text class="title-text" y="55%" clip-path="url(#clip1)">Welcome.</text>
+          </svg>
+
+          <svg class="outline" width="100%" height="100%">
+            <defs>
+              <clipPath id="clip2">
+                <rect x="0" y="25%" width="100%" height="20%" />
+              </clipPath>
+            </defs>
+            <text class="title-text" y="75%" clip-path="url(#clip2)">Welcome.</text>
+          </svg>
+
+          <svg class="title" width="100%" height="100%">
+            <text class="title-text" y="95%">Welcome.</text>
+          </svg>
+        </div>
+        <div class="home-element text-box">
+          <nav>
+            <div class="link">
+              <button class="link-text active" onclick="redirect('/')">HOME</button>
+            </div>
+            <div class="link">
+              <button class="link-text" onclick="redirect('/about')">ABOUT</button>
+            </div>
+            <div class="link">
+              <button class="link-text" onclick="redirect('/projects')">PROJECTS</button>
+            </div>
+            <div class="link">
+              <button class="link-text" onclick="redirect('/experience')">EXPERIENCE</button>
+            </div>
+            <div class="link">
+              <button class="link-text" onclick="redirect('/contact')">CONTACT</button>
+            </div>
+          </nav>
+        </div>
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-5.webp')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          />
+        </div>
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-6.webp')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          />
+        </div>
+        <div class="home-element text-box">
+          <p class="paragraph-text">
+            I AM A <span class="highlight">WEB DEVELOPER</span> AND GRAPHIC
+            DESIGNER.
+          </p>
+          <p class="paragraph-text">
+            I LIKE TO MAKE BEAUTIFUL WEBSITES.
+          </p>
+        </div>
+        <div class="home-element image">
+          <img
+            src="{{ url_for('static', filename='img/portfolio-photo-7.webp')}}"
+            alt="Photoshopped image of a face in a grainy black and white."
+          />
+        </div>
+      </div>
+    </main>
+  <script src="{{ url_for('static', filename='home/home.js')}}"></script>
+  </body>
+</html>

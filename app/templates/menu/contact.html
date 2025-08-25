@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+        name="description"
+        content="A collation of Callum's work."
+      />
+      <meta property="og:title" content="Callum's Portfolio" />
+      <meta property="og:description" content="A collation of Callum's work." />
+      <meta
+        property="og:image"
+        content="{{ url_for('static', filename='img/preview.jpg') }}"
+      />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:url" content="https://callumlewis.uk" />
+      <meta property="og:type" content="website" />
+      <meta name="keywords" content="portfolio, web development" />
+      <meta name="robots" content="index, follow" />
+      <meta name="author" content="Callum Lewis" />
+
+      <title>Callum's Portfolio</title>
+      <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='home/styles.css') }}"
+      />
+      <link
+        rel="icon"
+        href="{{ url_for('static', filename='home/facicon.ico') }}"
+        type="image/x-icon"
+      />
+    </head>
+  </head>
+  <body style="padding: 5vh 10vw;">
+    <h1 class="title-text" style="margin-bottom: 3vh;">The contact page is currently under development, please come back soon</h1>
+    <a href="/" class="link-text highlight">RETURN HOME</a>
+  <script src="{{ url_for('static', filename='home/home.js')}}"></script>
+  </body>
+</html>

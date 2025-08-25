@@ -11,12 +11,52 @@ views = Blueprint("views", __name__)
 @views.route('/')
 def home():
     """
-    Renders the homepage currently displaying a message that the site is under construction.
+    Renders the homepage.
 
     Returns:
-        Rendered HTML template: 'home.html'
+        Rendered HTML template: 'index.html'
     """
-    return render_template('home/home.html')
+    return render_template('menu/index.html')
+
+@views.route('/about')
+def about():
+    """
+    Renders the about currently displaying a message that the page is coming soon.
+
+    Returns:
+        Rendered HTML template: 'about.html'
+    """
+    return render_template('menu/about.html')
+
+@views.route('/projects')
+def projects():
+    """
+    Renders the projects currently displaying a message that the page is coming soon.
+
+    Returns:
+        Rendered HTML template: 'projects.html'
+    """
+    return render_template('menu/projects.html')
+
+@views.route('/experience')
+def experience():
+    """
+    Renders the experience currently displaying a message that the page is coming soon.
+
+    Returns:
+        Rendered HTML template: 'experience.html'
+    """
+    return render_template('menu/experience.html')
+
+@views.route('/contact')
+def contact():
+    """
+    Renders the contact currently displaying a message that the page is coming soon.
+
+    Returns:
+        Rendered HTML template: 'contact.html'
+    """
+    return render_template('menu/contact.html')
 
 @views.route('/projects/ivp')
 def ivp():
