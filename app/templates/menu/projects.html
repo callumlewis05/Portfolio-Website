@@ -1,3 +1,61 @@
-{% extends "menu/under-construction.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta
+        name="description"
+        content="A collation of Callum's work."
+      />
+      <meta property="og:title" content="Callum's Portfolio" />
+      <meta property="og:description" content="A collation of Callum's work." />
+      <meta
+        property="og:image"
+        content="{{ url_for('static', filename='img/preview.jpg') }}"
+      />
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:url" content="https://callumlewis.uk" />
+      <meta property="og:type" content="website" />
+      <meta name="keywords" content="portfolio, web development" />
+      <meta name="robots" content="index, follow" />
+      <meta name="author" content="Callum Lewis" />
 
-{% block page %}project{% endblock %}
+      <title>Callum's Portfolio</title>
+      <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='home/home.css') }}"
+      />
+      <link
+        rel="icon"
+        href="{{ url_for('static', filename='home/facicon.ico') }}"
+        type="image/x-icon"
+      />
+    </head>
+  </head>
+  <body style="padding: 5vh 10vw;">
+    <div class="home-element" style="animation: slide-in-down 1.2s ease-in-out;">
+      <h1 class="subtitle-text" style="margin-bottom: 3vh;">The projects page is currently under development but check out my projects below!</h1>
+      <ul>
+        <li>
+          <button style="cursor: pointer;" class="link-text" onclick="redirect('/projects/ivp')">○ ivp.ai</button>
+        </li>
+        <li>
+          <button style="cursor: pointer;" class="link-text" onclick="redirect('/projects/blackjack')">○ Blackjack</button><br>
+        </li>
+        <li>
+          <button style="cursor: pointer;" class="link-text" onclick="redirect('https://reytonwirereturns.com')">○ Reyton Wire</button><br>
+        </li>
+        <li>
+          <button style="cursor: pointer;" class="link-text" onclick="redirect('https://paintworx.uk')">○ Paintworx Automotive Repairs</button>
+        </li>
+      </ul> 
+      <br>
+      <button style="cursor: pointer;" class="link-text highlight" onclick="redirect('/')">RETURN HOME</button>
+    </div>
+  <script src="{{ url_for('static', filename='home/home.js')}}"></script>
+  </body>
+</html>

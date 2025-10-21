@@ -127,6 +127,17 @@ body {
   mix-blend-mode: difference;
 }
 
+.subtitle-text {
+  font-family: "Alexandria", sans-serif;
+  font-size: clamp(1.5rem, 5vw, 4rem);
+  font-weight: 600;
+  color: var(--text-colour);
+  text-align: left;
+  line-height: 110%;
+  letter-spacing: -0.3vw;
+  mix-blend-mode: difference;
+}
+
 /* Set default styles for all link elements */
 .link-text {
   font-family: "Alexandria", sans-serif;
@@ -150,7 +161,7 @@ body {
 /* Set default styles for all paragraph elements */
 .paragraph-text {
   font-family: "Alexandria", sans-serif;
-  font-size: clamp(0.9rem, 1.75vw, 1rem);
+  font-size: clamp(0.8rem, 1.75vw, 1rem);
   font-weight: 600;
   color: var(--text-colour);
   text-align: left;
@@ -223,6 +234,10 @@ body {
   position: absolute;
   transform: translateY(-200px);
   transition: transform 1s ease-in-out;
+}
+
+.settings-button {
+    display: none; /* ONLY WHILE UNDER DEVELOPMENT */
 }
 
 .settings.active {
