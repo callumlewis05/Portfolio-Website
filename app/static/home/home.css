@@ -58,17 +58,25 @@ img {
 /* Define variables for colors and default font */
 :root {
   /* Colours */
-  --highlight: #FF791F;
+  --highlight: #ff791f;
 
   --text-colour: #F9F9F9;
   --background-colour: #000000;
   --outline-colour: #F9F9F9;
+  --overlay-colour: rgba(255, 121, 31, 0.2);
+  --overlay-length: 45vw;
 
   --black: #000000;
   --white: #FFFFFF;
 
   /* Default font */
   font-family: system-ui, sans-serif;
+}
+
+@media screen and (max-width: 640px) {
+  :root {
+    --overlay-length: 100vw;
+  }
 }
 
 /* Set background properties for the HTML element */
@@ -122,12 +130,16 @@ body {
 /* Set default styles for all link elements */
 .link-text {
   font-family: "Alexandria", sans-serif;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(0.9rem, 1.75vw, 1rem);
   font-weight: 600;
   color: var(--text-colour);
   text-align: left;
   letter-spacing: -0.05vw;
   transition: color 0.15s ease-in-out;
+}
+
+.no-transitions * {
+  transition: none !important;
 }
 
 .link-text:hover {
@@ -138,7 +150,7 @@ body {
 /* Set default styles for all paragraph elements */
 .paragraph-text {
   font-family: "Alexandria", sans-serif;
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: clamp(0.9rem, 1.75vw, 1rem);
   font-weight: 600;
   color: var(--text-colour);
   text-align: left;
@@ -172,11 +184,7 @@ body {
 
 /* === Section 1 - Hero === */
 
-main {
-  height: 100%;
-}
-
-#container {
+.container {
   height: 100%;
   padding: 30px;
   display: grid;
@@ -188,14 +196,14 @@ main {
   animation: scale 1.6s cubic-bezier(0.53, 0, 0.43, 0.99);
 }
 
-#container > * {
+.container > * {
   width: 100%;
   overflow: hidden;
 }
 
 .home-element.text-box {
   border: 1px solid var(--outline-colour);
-  padding: 20px;
+  padding: 15px;
   position: relative;
 }
 
@@ -233,7 +241,7 @@ main {
   transition: transform 1s ease-in-out;
 }
 
-#container > .home-element.text-box:nth-child(2)::before {
+.container > .home-element.text-box:nth-child(2)::before {
   top: 10px;
   left: 10px;
   border-top: 1px solid var(--highlight);
@@ -242,12 +250,12 @@ main {
   transition: transform 1s ease-in-out;
 }
 
-#container > .home-element.text-box:nth-child(2).active::before {
+.container > .home-element.text-box:nth-child(2).active::before {
   transform: translateY(0);
   transition: transform 1s ease-in-out;
 }
 
-#container > .home-element.text-box:nth-child(2)::after {
+.container > .home-element.text-box:nth-child(2)::after {
   bottom: 10px;
   right: 10px;
   border-bottom: 1px solid var(--highlight);
@@ -256,19 +264,19 @@ main {
   transition: transform 1s ease-in-out;
 }
 
-#container > .home-element.text-box:nth-child(2).active::after {
+.container > .home-element.text-box:nth-child(2).active::after {
   transform: translateY(200px);
   transition: transform 1s ease-in-out;
 }
 
-#container > .home-element.text-box:nth-child(7)::after {
+.container > .home-element.text-box:nth-child(7)::after {
   top: 10px;
   right: 10px;
   border-top: 1px solid var(--highlight);
   border-right: 1px solid var(--highlight);
 }
 
-#container > .home-element.text-box:nth-child(10)::before {
+.container > .home-element.text-box:nth-child(10)::before {
   content: '';
   width: 30px;
   height: 30px;
@@ -279,7 +287,7 @@ main {
   border-left: 1px solid var(--highlight);
 }
 
-#container > .home-element.text-box:nth-child(10)::after {
+.container > .home-element.text-box:nth-child(10)::after {
   top: 10px;
   right: 10px;
   border-top: 1px solid var(--highlight);
@@ -288,7 +296,7 @@ main {
 
 .home-element.text-box .link {
   display: block;
-  margin-bottom: 4px;
+  margin-bottom: 1px;
 }
 
 .home-element.image {
@@ -313,7 +321,7 @@ main {
 
 .home-element button {
   border: none;
-  background-color: var(--background-colour);
+  background-color: transparent;
   cursor: pointer;
 }
 
@@ -321,92 +329,329 @@ main {
   color: var(--highlight);
 }
 
-.text-overlay {
-  width: 100px;
-  height: 200px;
-  background-color: white;
-  transform: translateX(-120%);
-  animation: overlay 1s cubic-bezier(0.53, 0, 0.43, 0.99) 1.6s;
+.home-element.title {
+  position: relative; /* 👈 gives positioning context to ::before */
+  display: inline-block;
+  background: black;  /* 👈 important! 'difference' needs contrast */
+  overflow: hidden;   /* optional: hides overlay edges */
 }
 
-/* Position all the different boxes in the grid */
-#container .home-element:nth-of-type(1) {
+.title {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* overlay rectangle animation */
+.home-element.title::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100%;
+  background-color: white;
+  mix-blend-mode: difference;
+  transform: translateX(-120%);
+  animation: overlay 1.3s cubic-bezier(0.53, 0, 0.43, 0.99) 1.6s forwards;
+  pointer-events: none;
+}
+
+/* Position all the different boxes in the grid and add entrance animations */
+.container .home-element:nth-of-type(1) {
   grid-column: col / span 2;
   grid-row: row / span 3;
 
-  animation: slide-in-down 1.2s cubic-bezier(0.42, 0, 0, 1.01);
+  animation: slide-in-right 1.2s cubic-bezier(0.42, 0, 0, 1.01);
 }
 
-#container .home-element:nth-of-type(2) {
+.container .home-element:nth-of-type(2) {
   grid-column: col 3 / span 3;
   grid-row: row / span 3;
 
   animation: slide-in-down 1.2s cubic-bezier(0.42, 0, 0, 1.01);
 }
 
-#container .home-element:nth-of-type(3) {
+.container .home-element:nth-of-type(3) {
   grid-column: col 6 / span 6;
   grid-row: row / span 3;
 
   animation: slide-in-down 1.2s cubic-bezier(0.42, 0, 0, 1.01);
 }
 
-#container .home-element:nth-of-type(4) {
+.container .home-element:nth-of-type(4) {
   grid-column: col 12 / span 4;
   grid-row: row / span 6;
 
   animation: slide-in-left 1.2s cubic-bezier(0.42, 0, 0, 1.01);
 }
 
-#container .home-element:nth-of-type(5) {
+.container .home-element:nth-of-type(5) {
   grid-column: col / span 4;
   grid-row: row 4 / span 2;
 
   animation: slide-in-right 1.2s cubic-bezier(0.42, 0, 0, 1.01);
 }
 
-#container .home-element:nth-of-type(6) {
+.container .home-element:nth-of-type(6) {
   grid-column: col 5 / span 7;
   grid-row: row 4 / span 3;
 
   animation: slide-in-right 1.2s cubic-bezier(0.42, 0, 0, 1.01);
 }
 
-#container .home-element:nth-of-type(7) {
+.container .home-element:nth-of-type(7) {
   grid-column: col / span 4;
   grid-row: row 6 / span 3;
 
   animation: slide-in-right 1.2s cubic-bezier(0.42, 0, 0, 1.01);
 }
 
-#container .home-element:nth-of-type(8) {
+.container .home-element:nth-of-type(8) {
   grid-column: col / span 4;
   grid-row: row 9 / span 2;
 
   animation: slide-in-up 1.2s cubic-bezier(0.42, 0, 0, 1.01);
 }
 
-#container .home-element:nth-of-type(9) {
+.container .home-element:nth-of-type(9) {
   grid-column: col 5 / span 5;
   grid-row: row 7 / span 4;
 
   animation: slide-in-up 1.2s cubic-bezier(0.42, 0, 0, 1.01);
 }
 
-#container .home-element:nth-of-type(10) {
+.container .home-element:nth-of-type(10) {
   grid-column: col 10 / span 3;
   grid-row: row 7 / span 4;
 
   animation: slide-in-up 1.2s cubic-bezier(0.42, 0, 0, 1.01);
 }
 
-#container .home-element:nth-of-type(11) {
+.container .home-element:nth-of-type(11) {
   grid-column: col 13 / span 3;
   grid-row: row 7 / span 4;
 
   animation: slide-in-left 1.2s cubic-bezier(0.42, 0, 0, 1.01);
 }
 
+/* Mobile */
+@media screen and (max-width: 640px) {
+  .container .home-element:nth-of-type(1) {
+    opacity: 0;
+  }
+
+  .container .home-element:nth-of-type(2) {
+    grid-column: col 5 / span 5;
+    grid-row: row / span 3;
+
+    animation: slide-in-down 1.2s cubic-bezier(0.42, 0, 0, 1.01);
+  }
+
+  .container .home-element:nth-of-type(3) {
+    opacity: 0;
+  }
+
+  .container .home-element:nth-of-type(4) {
+    grid-column: col 10 / span 6;
+    grid-row: row / span 3;
+
+    animation: slide-in-left 1.2s cubic-bezier(0.42, 0, 0, 1.01);
+  }
+
+  .container .home-element:nth-of-type(5) {
+    grid-column: col / span 4;
+    grid-row: row / span 3;
+  }
+
+  .container .home-element:nth-of-type(6) {
+    grid-column: col / span 15;
+    grid-row: row 4 / span 2;
+
+    animation: slide-in-right 1.2s cubic-bezier(0.42, 0, 0, 1.01);
+  }
+
+  .container .home-element:nth-of-type(7) {
+    grid-column: col / span 6;
+    grid-row: row 6 / span 3;
+
+    animation: slide-in-right 1.2s cubic-bezier(0.42, 0, 0, 1.01);
+  }
+
+  .container .home-element:nth-of-type(8) {
+    grid-column: col 7 / span 9;
+    grid-row: row 6 / span 2;
+  }
+
+  .container .home-element:nth-of-type(9) {
+    grid-column: col / span 6;
+    grid-row: row 9 / span 2;
+  }
+
+  .container .home-element:nth-of-type(10) {
+    grid-column: col 7 / span 9;
+    grid-row: row 8 / span 3;
+
+    animation: slide-in-up 1.2s cubic-bezier(0.42, 0, 0, 1.01);
+  }
+
+  .container .home-element:nth-of-type(11) {
+    opacity: 0;
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 641px) and (max-width: 1007px) {
+  .container .home-element:nth-of-type(1) {
+    opacity: 0;
+  }
+
+  .container .home-element:nth-of-type(2) {
+    grid-column: col 7 / span 4;
+    grid-row: row / span 3;
+
+    animation: slide-in-down 1.2s cubic-bezier(0.42, 0, 0, 1.01);
+  }
+
+  .container .home-element:nth-of-type(3) {
+    grid-column: col / span 6;
+    grid-row: row / span 3;
+  }
+
+  .container .home-element:nth-of-type(4) {
+    grid-column: col 11 / span 5;
+    grid-row: row / span 5;
+
+    animation: slide-in-left 1.2s cubic-bezier(0.42, 0, 0, 1.01);
+  }
+
+  .container .home-element:nth-of-type(5) {
+    grid-column: col / span 5;
+    grid-row: row 4 / span 3;
+  }
+
+  .container .home-element:nth-of-type(6) {
+    grid-column: col 6 / span 5;
+    grid-row: row 4 / span 2;
+
+    animation: slide-in-right 1.2s cubic-bezier(0.42, 0, 0, 1.01);
+  }
+
+  .container .home-element:nth-of-type(7) {
+    grid-column: col / span 5;
+    grid-row: row 7 / span 4;
+
+    animation: slide-in-right 1.2s cubic-bezier(0.42, 0, 0, 1.01);
+  }
+
+  .container .home-element:nth-of-type(8) {
+    opacity: 0;
+  }
+
+  .container .home-element:nth-of-type(9) {
+    grid-column: col 6 / span 6;
+    grid-row: row 6 / span 5;
+
+    animation: slide-in-up 1.2s cubic-bezier(0.42, 0, 0, 1.01);
+  }
+
+  .container .home-element:nth-of-type(10) {
+    grid-column: col 12 / span 4;
+    grid-row: row 6 / span 5;
+
+    animation: slide-in-up 1.2s cubic-bezier(0.42, 0, 0, 1.01);
+  }
+
+  .container .home-element:nth-of-type(11) {
+    opacity: 0;
+  }
+}
+
+.outline {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 26px;
+}
+
+.settings .link:not(:last-of-type) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.settings .link:not(:last-of-type)>.paragraph-text{
+  display: inline;
+  padding: 0;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 22px; width: 22px;
+  left: 2px; bottom: 2px;
+  background-color: white;
+  transition: 0.2s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: var(--highlight);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.home-element.text-box {
+  position: relative;
+}
+
+.overlay {
+  background: radial-gradient(
+    400px circle at var(--mouse-x) var(--mouse-y),
+    var(--overlay-colour),
+    transparent 40%
+  );
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+/* Show overlay only when hovering in dark mode */
+body.mouse-effects-on .home-element.text-box:hover .overlay {
+  opacity: 1;
+}
+
+/* In light mode the overlay always stays hidden */
+body.mouse-effects-off .home-element.text-box .overlay {
+  opacity: 0 !important;
+}
+
+/* Animations */
 @keyframes slide-in-down {
   0% {
     transform: translateY(-100vh);
@@ -507,78 +752,6 @@ main {
   }
 
   100% {
-    transform: translateX(45vw);
+    transform: translateX(var(--overlay-length));
   }
-}
-
-.title {
-  width  : 100%;
-  height : 100%;
-  position: absolute;
-  fill: var(--text-colour);
-  stroke: none;
-}
-
-.outline {
-  width  : 100%;
-  height : 100%;
-  position: absolute;
-}
-
-.outline text {
-  fill: none;
-  stroke: var(--text-colour);
-  stroke-width: 1px;
-  stroke-linejoin: round;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 46px;
-  height: 26px;
-}
-
-.settings .link:nth-of-type(1) {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.settings .link:nth-of-type(1)>.paragraph-text {
-  display: inline;
-  padding: 0;
-}
-
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-color: #ccc;
-  transition: 0.4s;
-  border-radius: 34px;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 22px; width: 22px;
-  left: 2px; bottom: 2px;
-  background-color: white;
-  transition: 0.2s;
-  border-radius: 50%;
-}
-
-input:checked + .slider {
-  background-color: var(--highlight);
-}
-
-input:checked + .slider:before {
-  transform: translateX(20px);
 }
