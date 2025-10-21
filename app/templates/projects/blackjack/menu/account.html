@@ -1,18 +1,18 @@
-{% extends "base.html" %}
+{% extends "projects/blackjack/base.html" %}
 
 {% block title %}
 Account
 {% endblock%}
 
 {% block css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/return-button.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/text.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='projects/blackjack/css/components/return-button.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='projects/blackjack/css/components/text.css') }}" />
 {% endblock %}
 
 {% block content %}
 <!-- Return button -->
 <a id="return" href="/projects/blackjack/menu">
-  <img src="{{ url_for('static', filename='img/arrow-back.svg') }}" alt="Return icon.">
+  <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-back.svg') }}" alt="Return icon.">
 </a>
 
 <!-- Account information -->

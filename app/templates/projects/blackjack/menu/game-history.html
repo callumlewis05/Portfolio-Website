@@ -1,19 +1,19 @@
-{% extends "base.html" %}
+{% extends "projects/blackjack/base.html" %}
 
 {% block title %}
 Game History
 {% endblock%}
 
 {% block css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/return-button.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/text.css') }}">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/grid.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='projects/blackjack/css/components/return-button.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='projects/blackjack/css/components/text.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='projects/blackjack/css/components/grid.css') }}">
 {% endblock %}
 
 {% block content %}
 <!-- Return button -->
 <a id="return" href="/projects/blackjack/menu">
-  <img src="{{ url_for('static', filename='img/arrow-back.svg') }}">
+  <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-back.svg') }}">
 </a>
 
 <!-- Title -->
@@ -29,10 +29,10 @@ Game History
       <h3>Game date</h3>
       <div class="sort">
         <button type="submit" name="sort_type" value="ascending_date">
-          <img src="{{ url_for('static', filename='img/arrow-up.svg') }}">
+          <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-up.svg') }}">
         </button>
         <button type="submit" name="sort_type" value="descending_date">
-          <img src="{{ url_for('static', filename='img/arrow-down.svg') }}">
+          <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-down.svg') }}">
         </button>
       </div>
     </div>
@@ -40,10 +40,10 @@ Game History
       <h3>Game time</h3>
       <div class="sort">
         <button type="submit" name="sort_type" value="ascending_time">
-          <img src="{{ url_for('static', filename='img/arrow-up.svg') }}">
+          <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-up.svg') }}">
         </button>
         <button type="submit" name="sort_type" value="descending_time">
-          <img src="{{ url_for('static', filename='img/arrow-down.svg') }}">
+          <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-down.svg') }}">
         </button>
       </div>
     </div>
@@ -51,10 +51,10 @@ Game History
       <h3>Number of hands</h3>
       <div class="sort">
         <button type="submit" name="sort_type" value="ascending_num_of_hands">
-          <img src="{{ url_for('static', filename='img/arrow-up.svg') }}">
+          <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-up.svg') }}">
         </button>
         <button type="submit" name="sort_type" value="descending_num_of_hands">
-          <img src="{{ url_for('static', filename='img/arrow-down.svg') }}">
+          <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-down.svg') }}">
         </button>
       </div>
     </div>
@@ -62,10 +62,10 @@ Game History
       <h3>Net Profit/Loss</h3>
       <div class="sort">
         <button type="submit" name="sort_type" value="ascending_net_profit_loss">
-          <img src="{{ url_for('static', filename='img/arrow-up.svg') }}">
+          <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-up.svg') }}">
         </button>
         <button type="submit" name="sort_type" value="descending_net_profit_loss">
-          <img src="{{ url_for('static', filename='img/arrow-down.svg') }}">
+          <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-down.svg') }}">
         </button>
       </div>
     </div>
@@ -73,10 +73,10 @@ Game History
       <h3>Average Profit/Loss</h3>
       <div class="sort">
         <button type="submit" name="sort_type" value="ascending_average_profit_loss">
-          <img src="{{ url_for('static', filename='img/arrow-up.svg') }}">
+          <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-up.svg') }}">
         </button>
         <button type="submit" name="sort_type" value="descending_average_profit_loss">
-          <img src="{{ url_for('static', filename='img/arrow-down.svg') }}">
+          <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-down.svg') }}">
         </button>
       </div>
     </div>
@@ -84,10 +84,10 @@ Game History
       <h3>Game Table</h3>
       <div class="sort">
         <button type="submit" name="sort_type" value="ascending_game_stakes">
-          <img src="{{ url_for('static', filename='img/arrow-up.svg') }}">
+          <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-up.svg') }}">
         </button>
         <button type="submit" name="sort_type" value="descending_game_stakes">
-          <img src="{{ url_for('static', filename='img/arrow-down.svg') }}">
+          <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-down.svg') }}">
         </button>
       </div>
     </div>
@@ -95,11 +95,11 @@ Game History
     <!-- Page number -->
     <div id="page-num">
       <button type="submit" name="page_num" value="-">
-        <img src="{{ url_for('static', filename='img/arrow-back.svg')}}">
+        <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-back.svg')}}">
       </button>
       {{ page_num }}
       <button type="submit" name="page_num" value="+">
-        <img src="{{ url_for('static', filename='img/arrow-forward.svg')}}">
+        <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-forward.svg')}}">
       </button>
     </div>
   </form>

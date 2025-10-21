@@ -6,12 +6,12 @@
     <title>{% block title %}Home{% endblock %}</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/components/background.css') }}"
+      href="{{ url_for('static', filename='projects/blackjack/css/components/background.css') }}"
     />
     {% block css %}
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/components/buttons.css') }}"
+      href="{{ url_for('static', filename='projects/blackjack/css/components/buttons.css') }}"
     />
     {% endblock %}
   </head>
@@ -55,7 +55,7 @@
         </div>
       </div>
     </div>
-    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+    <script src="{{ url_for('static', filename='projects/blackjack/js/base.js') }}"></script>
     {% block js %}{% endblock %}
   </body>
 </html>

@@ -21,16 +21,16 @@ DATABASE_PASSWORD = os.getenv('DATABASE_PASSWORD')
 DATABASE_HOST = os.getenv('DATABASE_HOST')
 
 
-# Establishes a connection to the database.
-connection = psycopg2.connect(
-    dbname=DATABASE_NAME,
-    user=DATABASE_USER,
-    password=DATABASE_PASSWORD,
-    host=DATABASE_HOST
-)
+# # Establishes a connection to the database.
+# connection = psycopg2.connect(
+#     dbname=DATABASE_NAME,
+#     user=DATABASE_USER,
+#     password=DATABASE_PASSWORD,
+#     host=DATABASE_HOST
+# )
 
-# Establishes a cursor to execute SQL queries.
-cursor = connection.cursor()
+# # Establishes a cursor to execute SQL queries.
+# cursor = connection.cursor()
 
 
 def get_sql_script(filename: str) -> str:

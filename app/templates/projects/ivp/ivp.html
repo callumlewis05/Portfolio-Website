@@ -28,8 +28,8 @@
     <meta name="author" content="Callum Lewis" />
 
     <title>IVP.ai</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='img/facicon.ico') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='projects/ivp/css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='projects/ivp/img/facicon.ico') }}" type="image/x-icon">
   </head>
   <body>
     <section id="section-1">
@@ -40,7 +40,7 @@
           The only data tool you need to grow and manage your business
         </h1>
         <img
-          src="{{ url_for('static', filename='img/laptop.webp') }}"
+          src="{{ url_for('static', filename='projects/ivp/img/laptop.webp') }}"
           alt="Laptop showcasing business analytics"
           id="hero-image"
           loading="lazy"
@@ -56,7 +56,7 @@
         analysing.
       </p>
 
-      <form action="#" method="POST" class="input-container">
+      <form action="#" class="input-container">
         <input
           type="email"
           name="email"
@@ -70,7 +70,7 @@
       </form>
       <br>
       <button class="call-button">
-        <a href="https://ivp.ai/meetings/marcus-miotti/ivpai-discovery-call?uuid=82075a54-e92f-4ea2-a05d-09a87bed1faf">Book a call here!</a>
+        <a href="#">Book a call here!</a>
       </button>
     </section>
     <section id="section-3">
@@ -156,7 +156,7 @@
         <div class="bubbles"></div>
       </div>
       <script src="https://cdn.jsdelivr.net/gh/josephg/noisejs@master/perlin.js"></script>
-      <script src="{{ url_for('static', filename='js/bubbles.js') }}" defer></script>
+      <script src="{{ url_for('static', filename='projects/ivp/js/bubbles.js') }}" defer></script>
     </section>
     <section id="section-5">
       <div id="heading-section">
@@ -226,7 +226,7 @@
             <p class="paragraph-text">How much does it cost?</p>
 
             <img
-              src="{{ url_for('static', filename='img/arrow.svg') }}"
+              src="{{ url_for('static', filename='projects/ivp/img/arrow.svg') }}"
               alt="Arrow icon"
               class="arrow"
               aria-hidden="true"
@@ -244,7 +244,7 @@
           <button class="faq-question">
             <p class="paragraph-text">What kind of data does it work with?</p>
             <img
-              src="{{ url_for('static', filename='img/arrow.svg') }}"
+              src="{{ url_for('static', filename='projects/ivp/img/arrow.svg') }}"
               alt="Arrow icon"
               class="arrow"
               aria-hidden="true"
@@ -263,7 +263,7 @@
           <button class="faq-question">
             <p class="paragraph-text">Do you offer data enrichment?</p>
             <img
-              src="{{ url_for('static', filename='img/arrow.svg') }}"
+              src="{{ url_for('static', filename='projects/ivp/img/arrow.svg') }}"
               alt="Arrow icon"
               class="arrow"
               aria-hidden="true"
@@ -284,7 +284,7 @@
               What separates you from other businesses?
             </p>
             <img
-              src="{{ url_for('static', filename='img/arrow.svg') }}"
+              src="{{ url_for('static', filename='projects/ivp/img/arrow.svg') }}"
               alt="Arrow icon"
               class="arrow"
               aria-hidden="true"
@@ -306,14 +306,14 @@
 
       <div id="container">
         <button class="call-button">
-          <a href="https://ivp.ai/meetings/marcus-miotti/ivpai-discovery-call?uuid=82075a54-e92f-4ea2-a05d-09a87bed1faf">Book a call here!</a>
+          <a href="#">Book a call here!</a>
         </button>
       </div>
     </section>
 
-    <script src="{{ url_for('static', filename='js/gradient.js') }}"></script>
+    <script src="{{ url_for('static', filename='projects/ivp/js/gradient.js') }}"></script>
     <script>
-      const imageUrl = "{{ url_for('static', filename='img/') }}";
+      const imageUrl = "{{ url_for('static', filename='projects/ivp/img/') }}";
       console.log("Image URL:", imageUrl);
 
       document.querySelectorAll(".faq-item").forEach((question) => {
@@ -327,6 +327,6 @@
       gradient.showGradientLegend();
     </script>
 
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script src="{{ url_for('static', filename='projects/ivp/js/index.js') }}"></script>
   </body>
 </html>

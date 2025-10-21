@@ -1,8 +1,9 @@
-{% extends "base.html" %}
+{% extends "projects/blackjack/base.html" %}
+
 {% block css %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/form.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/return-button.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='css/components/error-message.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='projects/blackjack/css/components/form.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='projects/blackjack/css/components/return-button.css') }}" />
+<link rel="stylesheet" href="{{ url_for('static', filename='projects/blackjack/css/components/error-message.css') }}" />
 {% endblock %}
 
 {% block title %}
@@ -12,7 +13,7 @@ Sign Up
 {% block content %}
 <!-- Return button -->
 <a id="return" href="/projects/blackjack">
-  <img src="{{ url_for('static', filename='img/arrow-back.svg') }}" alt="Return icon.">
+  <img src="{{ url_for('static', filename='projects/blackjack/img/arrow-back.svg') }}" alt="Return icon.">
 </a>
 
 <form action="" method="POST">
@@ -26,7 +27,7 @@ Sign Up
   <div>
     <label for="password1">Password:
       <img class="information"
-        src="{{ url_for('static', filename='/img/information-white.svg') }}"
+        src="{{ url_for('static', filename='projects/blackjack/img/information-white.svg') }}"
         title="Passwords must match and be 8 or more characters in length."
         alt="Information icon."
       >
