@@ -236,9 +236,9 @@ body {
   transition: transform 1s ease-in-out;
 }
 
-.settings-button {
-    display: none; /* ONLY WHILE UNDER DEVELOPMENT */
-}
+/* .settings-button {
+    display: none; ONLY WHILE UNDER DEVELOPMENT
+} */
 
 .settings.active {
   transform: translateY(0);
@@ -345,16 +345,40 @@ body {
 }
 
 .home-element.title {
-  position: relative; /* 👈 gives positioning context to ::before */
+  position: relative;
   display: inline-block;
-  background: black;  /* 👈 important! 'difference' needs contrast */
-  overflow: hidden;   /* optional: hides overlay edges */
+  background: black;
+  overflow: hidden;
 }
 
 .title {
   width: 100%;
   height: 100%;
   display: block;
+}
+
+.home-element.title {
+  position: relative;
+  display: inline-block;
+  background: black;
+  overflow: hidden;
+}
+
+#image canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto; /* Allow mouse interaction */
+}
+
+#image svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  /* Optionally hide the original SVG once shader is working */
+  /* opacity: 0; */
 }
 
 /* overlay rectangle animation */
