@@ -41,33 +41,59 @@ let isTextureLoaded = false;
 let lastTime;
 const lastMouse = new Vec2();
 
-function resize() {
-  if (!isTextureLoaded || !renderer || !mesh) return;
+const TARGET_ASPECT = 703 / 215;
 
-  const rect = image.getBoundingClientRect();
-  const canvasW = Math.max(1, Math.round(rect.width));
-  const canvasH = Math.max(1, Math.round(rect.height));
+function resize() {
+  if (!isTextureLoaded || !renderer || !mesh || !gl) return;
+
+  const containerRect = image.getBoundingClientRect();
+
+  // Available space *inside* the container after the desired inset margin
+  const availW = Math.max(1, Math.round(containerRect.width));
+  const availH = Math.max(1, Math.round(containerRect.height));
+
+  // Fit a TARGET_ASPECT rectangle into (availW, availH) using "contain"
+  let canvasW = availW;
+  let canvasH = Math.round(canvasW / TARGET_ASPECT);
+
+  if (canvasH > availH) {
+    canvasH = availH;
+    canvasW = Math.round(canvasH * TARGET_ASPECT);
+  }
+
+  canvasW = Math.max(1, canvasW);
+  canvasH = Math.max(1, canvasH);
+
+  // Position canvas inset + centered over the SVG
+  const c = gl.canvas;
+  image.style.position ||= 'relative';
+
+  c.style.position = 'absolute';
+  c.style.left = '50%';
+  c.style.top = '50%';
+  c.style.transform = 'translate(-50%, -50%)';
+  // The inset margin is achieved by sizing against availW/availH above,
+  // but if you also want a visible gap even when the container is tight:
+  // c.style.outline = '0'; // optional
+  c.style.pointerEvents = 'auto';
 
   // Let ogl.Renderer handle DPR & canvas pixel size
   renderer.setSize(canvasW, canvasH);
 
-  // intrinsic image size
+  // --- IMPORTANT: match the SVG "contain" behavior (letterboxing) ---
   const imgW = _size[0];
   const imgH = _size[1];
 
-  // scale image uniformly so it COVERs the canvas (no distortion)
-  const scale = Math.max(canvasW / imgW, canvasH / imgH);
+  // "contain" (shows borders instead of cropping)
+  const scale = Math.min(canvasW / imgW, canvasH / imgH);
 
-  // rendered image size after scaling
   const renderedW = imgW * scale;
   const renderedH = imgH * scale;
 
-  // UV multipliers: how many image UVs correspond to the canvas size
-  // (used in shader as: uv' = (uv - 0.5) * vec2(a1, a2) + 0.5)
-  const a1 = renderedW / canvasW; // x multiplier
-  const a2 = renderedH / canvasH; // y multiplier
+  // In contain, these are <= 1, producing the same kind of padding/borders
+  const a1 = renderedW / canvasW;
+  const a2 = renderedH / canvasH;
 
-  // update uniform in-place if possible
   const resUniform = mesh.program.uniforms.res.value;
   if (resUniform && typeof resUniform.set === 'function') {
     resUniform.set(canvasW, canvasH, a1, a2);
@@ -75,7 +101,6 @@ function resize() {
     mesh.program.uniforms.res.value = new Vec4(canvasW, canvasH, a1, a2);
   }
 
-  // If flowmap needs resizing, call its API; otherwise update.
   if (flowmap && typeof flowmap.resize === 'function') {
     flowmap.resize(canvasW, canvasH);
   } else if (flowmap) {
@@ -86,40 +111,42 @@ function resize() {
 }
 
 
+
 // mouse/touch handler (unchanged)
 function updateMouse(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const rect = image.getBoundingClientRect();
-    let x, y;
+  const rect = gl?.canvas?.getBoundingClientRect() || image.getBoundingClientRect();
 
-    if (e.changedTouches && e.changedTouches.length) {
-        x = e.changedTouches[0].pageX - rect.left;
-        y = e.changedTouches[0].pageY - rect.top;
-    } else {
-        x = e.clientX - rect.left;
-        y = e.clientY - rect.top;
-    }
+  let x, y;
+  if (e.changedTouches && e.changedTouches.length) {
+    x = e.changedTouches[0].pageX - rect.left;
+    y = e.changedTouches[0].pageY - rect.top;
+  } else {
+    x = e.clientX - rect.left;
+    y = e.clientY - rect.top;
+  }
 
-    mouse.set(x / rect.width, 1 - y / rect.height);
+  mouse.set(x / rect.width, 1 - y / rect.height);
 
-    if (!lastTime) {
-        lastTime = performance.now();
-        lastMouse.set(x, y);
-    }
-
-    const deltaX = x - lastMouse.x;
-    const deltaY = y - lastMouse.y;
-
+  if (!lastTime) {
+    lastTime = performance.now();
     lastMouse.set(x, y);
+  }
 
-    const time = performance.now();
-    const delta = Math.max(10.4, time - lastTime);
-    lastTime = time;
-    velocity.x = deltaX / delta;
-    velocity.y = deltaY / delta;
-    velocity.needsUpdate = true;
+  const deltaX = x - lastMouse.x;
+  const deltaY = y - lastMouse.y;
+
+  lastMouse.set(x, y);
+
+  const time = performance.now();
+  const delta = Math.max(10.4, time - lastTime);
+  lastTime = time;
+  velocity.x = deltaX / delta;
+  velocity.y = deltaY / delta;
+  velocity.needsUpdate = true;
 }
+
 
 function update(t) {
     if (!isTextureLoaded) return; // Don't render until texture is loaded
@@ -235,6 +262,6 @@ function initWebGL() {
 }
 
 // Delay full initialization so CSS animations/transitions on the #image element complete.
-// setTimeout(() => {
-//     initWebGL();
-// }, 2900);
+setTimeout(() => {
+    initWebGL();
+}, 2900);

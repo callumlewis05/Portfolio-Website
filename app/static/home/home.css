@@ -489,6 +489,7 @@ body {
 
   .container .home-element:nth-of-type(3) {
     opacity: 0;
+    pointer-events: none;
   }
 
   .container .home-element:nth-of-type(4) {
