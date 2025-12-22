@@ -16,7 +16,13 @@ def home():
     Returns:
         Rendered HTML template: 'index.html'
     """
-    return render_template('menu/index.html')
+    vertex_shader_url = url_for('static', filename='shaders/vertexShader.glsl')
+    fragment_shader_url = url_for('static', filename='shaders/fragmentShader.glsl')
+    return render_template(
+        'menu/index.html',
+        vertex_shader_url=vertex_shader_url, 
+        fragment_shader_url=fragment_shader_url
+    )
 
 @views.route('/about')
 def about():

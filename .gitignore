@@ -4,3 +4,4 @@ venv
 .env
 line_count.py
 .requirements.txt.*
+app/frontend/node_modules
