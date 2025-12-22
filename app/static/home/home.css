@@ -511,6 +511,10 @@ body {
     animation: slide-in-right 1.2s cubic-bezier(0.42, 0, 0, 1.01);
   }
 
+  .container .home-element:nth-of-type(6) canvas {
+    display: none;
+  }
+
   .container .home-element:nth-of-type(7) {
     grid-column: col / span 6;
     grid-row: row 6 / span 3;
