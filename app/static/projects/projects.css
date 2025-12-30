@@ -1,0 +1,493 @@
+body {
+  overflow-y: scroll;
+}
+
+img {
+  max-width: auto;
+}
+
+.container-2 {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: auto 1fr;
+  padding: 0 20px;
+}
+
+#projects-container {
+  height: calc(100vh - 60px);
+  object-fit: contain;
+  opacity: 0;
+}
+
+/* SVG sizing as you already have */
+#projects-title {
+  height: calc(100vh - 40px);
+  width: auto;
+  display: block;
+}
+
+/* Hitbox rect uses bbox with padding (created in JS) */
+#projects-title .hitbox {
+  fill: transparent;
+  pointer-events: all;
+  cursor: pointer;
+}
+
+/* Don’t let the real strokes steal pointer events (prevents flicker) */
+#projects-title .base,
+#projects-title .top {
+  pointer-events: none;
+  fill: none;
+  stroke-width: 4.2;
+}
+
+/* Orange base (appears after the white draw completes) */
+#projects-title .base {
+  stroke: #ff791f;
+  opacity: 0; /* start hidden */
+  transition: opacity 250ms ease; /* fade in after draw */
+}
+
+/* White top stroke does the draw + retract */
+#projects-title .top {
+  stroke: #ffffff;
+
+  /* these will be set per-path in JS */
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+
+  /* draw + hover animation */
+  transition: stroke-dashoffset 1000ms linear 0.1s;
+}
+
+#projects-title path:hover {
+  stroke: #ff791f;
+}
+
+.svg-container,
+.svg-placeholder {
+  display: flex;
+  gap: 20px;
+}
+
+.svg-container {
+  position: fixed;
+  z-index: 10;
+  top: 20px;
+  bottom: 20px;
+  left: 20px;
+}
+
+.svg-container .vertical-divider {
+  animation: enter-bottom 1.2s ease-in-out ;
+}
+
+.vertical-divider:nth-of-type(1) {
+  background-color: #777;
+}
+
+.svg-container .vertical-divider {
+  height: calc(100% + 3px); /* Accounts for optical ollusion */
+  margin: 0;
+}
+
+@font-face {
+  font-family: "Syncopate";
+  src: url("../fonts/Syncopate-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.project-title-text {
+  font-family: "Syncopate", sans-serif;
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  font-weight: 400;
+  color: var(--text-colour);
+  text-align: left;
+  transition: color 0.15s ease-in-out;
+  z-index: 1;
+  position: relative;
+}
+
+@font-face {
+  font-family: "Porter Sans Block";
+  src: url("../fonts/Porter-Sans-Block.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.project-number-text {
+  font-family: "Porter Sans Block", sans-serif;
+  font-size: clamp(4rem, 7vw, 7rem);
+  font-weight: 400;
+  color: var(--text-colour);
+  text-align: left;
+  transition: color 0.15s ease-in-out;
+  line-height: 1;
+  display: inline-block;
+  z-index: 1;
+  position: relative;
+}
+
+main {
+  display: grid;
+  grid-template-rows: 11rem 1px 11rem 1px 20rem 1px 11rem 1px 20rem;
+  padding-left: 1px;
+  /* min-height: 10000px; */
+}
+
+.project-row>div {
+  display: flex;
+  height: 100%;
+}
+
+.project-row .paragraph-text {
+  font-size: clamp(1rem, 1.75vw, 1.1rem);
+}
+
+.number {
+  height: 125px;
+}
+
+.ivp-left-box {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: end;
+}
+
+.ivp-centre-box {
+  display: flex;
+  justify-content: space-between;
+  gap: 10vw;
+  width: 100%;
+}
+
+.ivp-right-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ivp-right-box svg {
+  width: 20vw;
+}
+
+.ivp-centre-box p {
+  max-width: 400px;
+}
+
+.divider {
+  height: 1px;
+  width: calc(100% - 40px);
+  background-color: #777;
+  margin: 0 20px;
+}
+
+.vertical-divider {
+  height: calc(100%);
+  width: 1px;
+  background-color: #333;
+  margin: 0 20px;
+}
+
+
+.project-row {
+  position: relative;
+  isolation: isolate;
+  background-color: black;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.game-of-life-container {
+  display: flex;
+  width: 100%;
+}
+
+.ivp-right-box,
+.gol-centre-box {
+  display: flex;
+  align-items: center;
+}
+
+.project-row::before {
+  content: "";
+  background-color: black;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 100%;
+  animation: reveal 1.5s ease-in-out;
+  z-index: 2;
+}
+
+.row-inner-container .number path {
+  transition: fill 0.3s ease-in-out, stroke 0.3s ease-in-out;
+}
+
+.row-inner-container:hover .number path {
+  fill: #ff791f;
+  stroke: #ff791f;
+  transition: fill 0.3s ease-in-out, stroke 0.3s ease-in-out;
+}
+
+.row-inner-container .project-title-text {
+  transition: color 0.3s ease-in-out;
+}
+
+.row-inner-container:hover .project-title-text {
+  color: #ff791f;
+  transition: color 0.3s ease-in-out;
+}
+
+.row-inner-container .paragraph-text {
+  transition: color 0.3s ease-in-out;
+}
+
+.row-inner-container:hover .paragraph-text {
+  color: #ff791f;
+  transition: color 0.3s ease-in-out;
+}
+
+
+.divider {
+  animation: enter-right 1.2s ease-in-out;
+}
+
+@keyframes enter-right {
+  0% {
+    transform: translateX(100vw);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes enter-bottom {
+  0% {
+    transform: translateY(100vh);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes reveal {
+  0% {
+    top: 0;
+  }
+
+  100% {
+    top: 99%;
+  }
+}
+
+@keyframes project-hover {
+  0% {
+    left: 100%;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+.return-button {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+}
+
+.return-button svg {
+  width: 120px;
+}
+
+.return-button button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  transition: color 0.15s ease-in-out;
+}
+
+.return-button path {
+  stroke: white;
+  transition: stroke 0.15s ease-in-out;
+}
+
+.return-button:hover button {
+  color: #ff791f;
+}
+
+.return-button:hover path {
+  stroke: #ff791f;
+}
+
+.gol-right-box {
+  position: relative;
+  width: 100%;
+}
+
+.gol-right-box .project-title-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 45%;
+}
+
+.gol-right-box .video-container {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 45%;
+  display: inline-block;
+}
+
+.gol-right-box .paragraph-text {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: inline-block;
+  max-width: 320px;
+  padding: 0;
+  text-align: right;
+}
+
+.mom-left-box {
+  position: relative;
+  width: 100%;
+}
+
+.mom-left-box .project-title-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 45%;
+}
+
+.mom-left-box .paragraph-text {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: inline-block;
+  max-width: 370px;
+  padding: 0;
+  text-align: right;
+}
+
+.mars {
+  height: 100%;
+  aspect-ratio: 1;
+  margin: 0 20px;
+}
+
+.number-three-container {
+  display: flex;
+  align-items: end;
+}
+
+
+/* === Videos === */
+
+.video-container {
+  position: relative;
+  height: 100%;
+  aspect-ratio: 1;
+}
+
+.video-container video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  inset: 0;
+  /* transition: filter 0.3s ease-in-out; */
+}
+
+
+.video-container video.hi {
+  /* turns whites into #ff791f-ish, keeps blacks black-ish */
+  filter: invert(22%) sepia(14%) saturate(1200%) hue-rotate(338deg) brightness(69%) contrast(189%);
+  /* transition: filter 0.3s ease-in-out; */
+}
+
+
+/* === Blackjack === */
+
+.blackjack-left-box {
+  position: relative;
+  width: 100%;
+}
+
+.blackjack-left-box .paragraph-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  height: 45%;
+  max-width: 40%;
+}
+
+.blackjack-left-box .project-title-text {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: inline-block;
+  padding: 0;
+  text-align: right;
+}
+
+/* === Paintworx === */
+
+.paintworx-left-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.paintworx-left-box .video-container {
+  height: 30%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.paintworx-left-box .project-title-text {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-align: right;
+}
+
+.paintworx-centre-box {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  width: 60%;
+}
+
+.row-inner-container{
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+.mobile-content {
+  display: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .mobile-content {
+    display: block;
+  }
+
+  .laptop-content {
+    display: none;
+  }
+}

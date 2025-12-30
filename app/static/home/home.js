@@ -6,7 +6,7 @@ function redirect(url) {
     'in-down': 'out-up',
     'in-left': 'out-right',
     'in-right': 'out-left',
-  }
+  };
 
   Array.from(items).forEach(element => {
     element.style.animation = getComputedStyle(element).animation.replace(
@@ -15,10 +15,100 @@ function redirect(url) {
     );
   });
 
+  // --- SVG draw-out on projects page ---
+  let delayMs = 1000; // fallback
+
+  const path = window.location.pathname;
+  const onProjects = path === '/projects/' || path === '/projects';
+
+  if (onProjects) {
+    delayMs = Math.max(delayMs, animateProjectsTitleOut());
+  }
+
   setTimeout(() => {
     window.location.href = url;
-  }, 1000);
+  }, delayMs);
 }
+
+/**
+ * Animates the #projects-title SVG "out" by setting .top strokeDashoffset to its length.
+ * Returns the estimated duration (ms) needed to finish the transition.
+ */
+function animateProjectsTitleOut() {
+  const svg = document.querySelector('#projects-title');
+  if (!svg) return 0;
+
+  const bases = Array.from(svg.querySelectorAll('.stroke-group .base'));
+  bases.forEach((b) => {
+    b.style.opacity = '0';
+    b.getBoundingClientRect();
+  });
+  
+
+  const tops = Array.from(svg.querySelectorAll('.stroke-group .top'));
+  if (!tops.length) return 0;
+
+  // Helper: parse "0.6s, 200ms" etc -> max ms
+  const maxTimeMsFromList = (listStr) => {
+    return Math.max(
+      ...listStr.split(',').map(s => {
+        const v = s.trim();
+        if (!v) return 0;
+        if (v.endsWith('ms')) return parseFloat(v);
+        if (v.endsWith('s')) return parseFloat(v) * 1000;
+        // default assume seconds if unit missing (rare)
+        return parseFloat(v) * 1000;
+      })
+    );
+  };
+
+  const getTransitionTotalMs = (el) => {
+    const cs = getComputedStyle(el);
+    const dur = maxTimeMsFromList(cs.transitionDuration || '0s');
+    const del = maxTimeMsFromList(cs.transitionDelay || '0s');
+    return dur + del;
+  };
+
+  // Ensure lengths exist
+  tops.forEach(t => {
+    if (!t.dataset.len) {
+      try {
+        t.dataset.len = String(t.getTotalLength());
+      } catch {
+        t.dataset.len = '0';
+      }
+    }
+  });
+
+  const maxMs = Math.max(...tops.map(getTransitionTotalMs), 0);
+
+  // Force an actual "out" animation even if currently already hidden:
+  // 1) jump to visible (0) without transition
+  // 2) next frame: transition to hidden (len)
+  tops.forEach(t => {
+    t.style.transition = 'none';
+    t.style.strokeDashoffset = '0';
+  });
+
+  // Commit the "0" state
+  svg.getBoundingClientRect();
+
+  // Restore transitions (use CSS-defined transition)
+  tops.forEach(t => {
+    t.style.transition = '';
+  });
+
+  // Animate out on next frame
+  requestAnimationFrame(() => {
+    tops.forEach(t => {
+      t.style.strokeDashoffset = t.dataset.len;
+    });
+  });
+
+  // Small buffer so we don't cut it too tight
+  return Math.ceil(maxMs + 50);
+}
+
 
 function settings() {
   document.querySelector('.settings').classList.toggle('active');

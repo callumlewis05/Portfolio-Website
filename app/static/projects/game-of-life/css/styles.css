@@ -1,0 +1,128 @@
+:root {
+  --white-paint-brush: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpb25pY29uIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZD0iTTQ1Mi4zNyA1OS42M2gwYTQwLjQ5IDQwLjQ5IDAgMDAtNTcuMjYgMEwxODQgMjk0Ljc0YzIzLjA4IDQuNyA0Ni4xMiAyNy4yOSA0OS4yNiA0OS4yNmwyMTkuMTEtMjI3LjExYTQwLjQ5IDQwLjQ5IDAgMDAwLTU3LjI2ek0xMzggMzM2Yy0yOS44OCAwLTU0IDI0LjUtNTQgNTQuODYgMCAyMy45NS0yMC44OCAzNi41Ny0zNiAzNi41N0M2NC41NiA0NDkuNzQgOTIuODIgNDY0IDEyMCA0NjRjMzkuNzggMCA3Mi0zMi43MyA3Mi03My4xNCAwLTMwLjM2LTI0LjEyLTU0Ljg2LTU0LTU0Ljg2eiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2Utd2lkdGg9IjMyIi8+PC9zdmc+');
+  --black-paint-brush: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGNsYXNzPSJpb25pY29uIiB2aWV3Qm94PSIwIDAgNTEyIDUxMiI+PHBhdGggZD0iTTQ1Mi4zNyA1OS42M2gwYTQwLjQ5IDQwLjQ5IDAgMDAtNTcuMjYgMEwxODQgMjk0Ljc0YzIzLjA4IDQuNyA0Ni4xMiAyNy4yOSA0OS4yNiA0OS4yNmwyMTkuMTEtMjI3LjExYTQwLjQ5IDQwLjQ5IDAgMDAwLTU3LjI2ek0xMzggMzM2Yy0yOS44OCAwLTU0IDI0LjUtNTQgNTQuODYgMCAyMy45NS0yMC44OCAzNi41Ny0zNiAzNi41N0M2NC41NiA0NDkuNzQgOTIuODIgNDY0IDEyMCA0NjRjMzkuNzggMCA3Mi0zMi43MyA3Mi03My4xNCAwLTMwLjM2LTI0LjEyLTU0Ljg2LTU0LTU0Ljg2eiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJjdXJyZW50Q29sb3IiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgc3Ryb2tlLXdpZHRoPSIzMiIvPjwvc3ZnPg==');
+}
+
+/* General body styling */
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: black;
+  gap: 10px;
+}
+
+#canvas-container {
+  display: flex;
+}
+
+#preset-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#preset-container button {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+  border: white solid 1px;
+  background-color: black;
+  cursor: pointer;
+  color: white;
+  font-size: 0.7rem;
+  text-align: center;
+
+  position: relative;
+}
+
+#preset-container button .tooltip-text {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+ 
+  position: absolute;
+  z-index: 1;
+
+  width: 120px;
+  top: 100%;
+  left: 50%;
+  margin-left: -60px;
+
+  pointer-events: none;
+}
+
+#preset-container button:hover .tooltip-text {
+  visibility: visible;
+}
+
+#preset-container button:nth-last-child(-n+5) {
+  padding: 0;
+}
+
+/* Canvas styling */
+canvas {
+  background-color: #333;
+  box-sizing: border-box;
+  border: solid 1px #ffffff;
+  cursor: url('../img/brush-icon.svg') 0 24, auto;
+}
+
+/* Interaction buttons container styling */
+.interaction-buttons {
+  background-color: white;
+  border: none;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+}
+
+/* Interaction buttons image styling */
+.interaction-buttons img {
+  width: 25px;
+  height: 25px;
+}
+
+/* Hidden class styling */
+.hidden {
+  display: none;
+}
+
+/* Inputs container styling */
+#inputs {
+  display: flex;
+  gap: 10px;
+}
+
+/* Label styling */
+label {
+  color: white;
+}
+
+/* Slider styling */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: linear-gradient(to right, #3498db 50%, #e74c3c 50%);
+  height: 8px;
+  border-radius: 4px;
+}
+
+/* Slider thumb styling */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: grey;
+  cursor: pointer;
+}

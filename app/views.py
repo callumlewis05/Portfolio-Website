@@ -67,3 +67,7 @@ def contact():
 @views.route('/projects/ivp')
 def ivp():
     return render_template('projects/ivp/ivp.html')
+
+@views.route('/projects/game-of-life')
+def gameOfLife():
+    return render_template('projects/game-of-life/index.html')

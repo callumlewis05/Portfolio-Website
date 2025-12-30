@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conway's Game of Life</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='projects/game-of-life/css/styles.css') }}" />
+  </head>
+  <body>
+    <div id="canvas-container">
+      <div id="preset-container">
+        <button id="brush-button">
+          <img src="{{ url_for('static', filename='projects/game-of-life/img/brush-icon.svg') }}" alt="" />
+          <span class="tooltip-text"
+            >Allows you to draw live cells onto the grid</span
+          >
+        </button>
+        <button id="eraser-button">
+          <img src="{{ url_for('static', filename='projects/game-of-life/img/eraser-icon.svg') }}" alt="" />
+          <span class="tooltip-text"
+            >Allows you to remove live cells from the grid</span
+          >
+        </button>
+        <button id="spaceship-button">
+          Space&#8203;ship
+          <span class="tooltip-text">
+            A spaceship or a glider, is a finite pattern that returns to its
+            initial state after a number of generations but in a different
+            location.
+          </span>
+        </button>
+        <button id="methuselah-button">
+          Methu&shy;selah
+          <span class="tooltip-text">
+            A methuselah is a pattern that takes a large number of generations
+            in order to stabilize and becomes much larger than its initial
+            configuration at some point during its evolution.
+          </span>
+        </button>
+        <button id="gun-button">
+          Gun
+          <span class="tooltip-text">
+            A gun is a stationary pattern that repeatedly emits spaceships or
+            gliders forever.
+          </span>
+        </button>
+        <button id="puffer-button">
+          Puffer
+          <span class="tooltip-text">
+            A puffer (or puffer train) is a pattern that moves like a spaceship,
+            except that it leaves debris behind.
+          </span>
+        </button>
+        <button id="diamond-button">
+          Diamond ring
+          <span class="tooltip-text">
+            Diamond ring is a period-3 billiard table oscillator that was found
+            in 1972 by David Buckingham.
+          </span>
+        </button>
+        <button id="randomise-button">
+          Random&shy;ise
+          <span class="tooltip-text">
+            Randomly set all cells to either the alive or dead state.
+          </span>
+        </button>
+      </div>
+      <canvas id="canvas"></canvas>
+    </div>
+    <section id="inputs">
+      <div class="sliderContainer">
+        <label for="gridSize"
+          >Grid size (<span id="gridSizeAmount">10</span>):</label
+        >
+        <input
+          type="range"
+          min="1"
+          value="25"
+          ,
+          max="200"
+          name="gridSize"
+          id="gridSizeSlider"
+          class="slider"
+        />
+      </div>
+      <button id="startStopButton" class="interaction-buttons">
+        <img src="{{ url_for('static', filename='projects/game-of-life/img/play-icon.svg') }}" id="playIcon" class="icon" />
+        <img src="{{ url_for('static', filename='projects/game-of-life/img/pause-icon.svg') }}" id="pauseIcon" class="icon hidden" />
+      </button>
+      <button id="resetButton" class="interaction-buttons">
+        <img src="{{ url_for('static', filename='projects/game-of-life/img/refresh-icon.svg') }}" id="playIcon" />
+      </button>
+      <div class="sliderContainer">
+        <label for="refreshRate"
+          >Refresh rate (s) (<span id="refreshRateAmount">1</span>):</label
+        >
+        <input
+          type="range"
+          min="0.01"
+          value="0.1"
+          max="1"
+          step="0.01"
+          name="refreshRate"
+          id="refreshRateSlider"
+          class="slider"
+        />
+      </div>
+    </section>
+    <script>
+      const imgFolderPath = "{{ url_for('static', filename='projects/game-of-life/img')}}"
+    </script>
+    <script type="module" src="{{ url_for('static', filename='projects/game-of-life/js/canvas.js') }}"></script>
+  </body>
+</html>
